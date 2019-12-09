@@ -166,8 +166,8 @@
     },
     {
         "id": "dreyer",
-        "name": "Carl Dreyer",
-        "name_jp": "カール・ドライヤー",
+        "name": "Carl Theodor Dreyer",
+        "name_jp": "カール・テオドア・ドライヤー",
         "born": "1889-02-03",
         "died": "1968-03-20",
         "born_at": "Denmark",
@@ -548,5 +548,5 @@
         "died_at": "(China)",
         "aged": 49,
         "copyright": ""
-    }    
+    }
 ]
