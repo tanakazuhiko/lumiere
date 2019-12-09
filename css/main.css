@@ -1,0 +1,345 @@
+/*
+* timeline with zoom, pan and sort
+* copyright 2019 tanakazuhiko
+* powered by d3.js
+*/
+body {
+    position: relative;
+    background-color: #222;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 10px;
+    color: #ddd;
+    overflow: hidden;
+    font-weight: 200;
+    background-repeat: no-repeat;
+    background-position: top center;
+    -moz-background-size: cover;
+    background-size: cover;
+    transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+}
+
+svg {
+    font: 10px sans-serif;
+    margin-top: 55px;
+    shape-rendering: crispEdges;
+}
+
+a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #DCDCDC;
+}
+
+/* svg */
+.rect {
+    opacity: 0.6;
+    fill: "#151515";
+    /* cursor: grab; */
+}
+
+.bar {
+    opacity: 0.2;
+    fill: white;
+    cursor: "pointer";
+}
+
+.bar:hover {
+    fill: brown;
+}
+
+.name {
+    fill: #aaa;
+    text-anchor: end;
+    cursor: default;
+    margin-right: 4px;
+}
+
+rect.born, rect.died, rect.film {
+    cursor: pointer;
+}
+
+#count_d {
+    width: 30px;
+}
+
+/* header */
+.header {
+    height: 55px;
+    width: 1330px;
+    color: white;
+    position: fixed;
+    margin: 0;
+    background-color: #222;
+    cursor: default;
+}
+
+.header .title {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    font-size: 20px;
+    font-weight: 100;
+    color: #ddd;
+}
+
+.header .title span {
+    font-size: 26px;
+    font-weight: 500;
+    font-style: italic;
+    color: #a1a4ab;
+}
+
+.header .title span.headline {
+    font-size: 26px;
+    font-weight: 200;
+    font-style: normal;
+    color: #a1a4ab;
+}
+
+.header .title span.age {
+    font-size: 13px;
+    font-weight: 300;
+    font-style: normal;
+    position: absolute;
+    top: 27px;
+    left: 301px;
+    width: 300px;
+    color: #a1a4ab;
+}
+
+.header .menu {
+    position: absolute;
+    left: 528px;
+    top: 8px;
+}
+
+.header .menu .item {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.header .menu .item select {
+    background-color: #444;
+    border: none;
+    font-size: 12px;
+    font-weight: 100;
+    border-radius: 0;
+    padding: 5px 20px;
+    margin-top: 8px;
+    color: #ddd;
+    width: 80px;
+    cursor: "pointer";
+}
+
+.reset {
+    background-color: #444;
+    color: white;
+    font-weight: 100;
+    border-radius: 4px;
+    border: 0;
+    width: 50px;
+    height: 18px;
+    cursor: pointer;
+    margin: 2px 0 0 6px;
+}
+
+.reset:hover, #sort:hover {
+    opacity: 0.6;
+}
+
+.header .legend {
+    position: absolute;
+    left: 660px;
+    top: 18px;
+    color: #ddd;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 400;
+}
+
+.header .legend .item {
+    display: inline-block;
+    margin-right: 14px;
+    border-left: 6px solid;
+    padding-left: 5px;
+}
+
+.header .legend .born.item {
+    border-color: #f03b20;
+}
+
+.header .legend .died.item {
+    border-color: #444;
+}
+
+.header .legend .film.item {
+    border-color: #aaa;
+}
+
+.born {
+    fill: #f03b20;
+}
+
+.died {
+    fill: #444;
+}
+
+.live {
+      background: -moz-linear-gradient(left, #FFC778 50%, #FFF);
+      background: -webkit-linear-gradient(left, #FFC778 50%, #FFF);
+      background: linear-gradient(to right, #FFC778 50%, #FFF);
+}
+
+.film {
+    fill: #aaa;
+}
+
+.born, .died, .film {
+    opacity: 0.6;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #808080;
+    text-align: center;
+    font-size: 14rem;
+    font-weight: 800;
+    font-style: italic;
+    font-family: "arial black";
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* footer */
+.footer {
+    position: absolute;
+    padding-bottom: 30px;
+    bottom: 0px;
+    font-size: 1.1em;
+    color: #aaa;
+    margin-left: 5px;
+    cursor: default;
+}
+
+/* copyright */
+.copyright {
+    position: absolute;
+    padding-bottom: 30px;
+    bottom: 0px;
+    right: 6px;
+    font-size: 1em;
+    font-weight: 400;
+    color: #aaa;
+    margin-left: 5px;
+    cursor: default;
+}
+
+/* axis */
+line {
+    stroke: #666;
+}
+
+.domain {
+    stroke: none;
+}
+
+.gy .tick {
+    opacity: 0;
+}
+
+.tick {
+    cursor: default;
+}
+
+.tick.selected {
+    stroke-width: 10px;
+    fill: #F5F5F5;
+}
+
+.today {
+    stroke-width: 2px;
+    fill: brown;
+}
+
+/* tooltip */
+.tooltip {
+    position: absolute;
+    opacity: 0.9;
+    width: 300px;
+    height: 300px;
+    padding: 0px;
+    background: white;
+    color: black;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+    visibility: hidden;
+    transition: all 0.25s;
+    z-index: 99999;
+    cursor: default;
+}
+
+.tooltip_img {
+    width: 300px;
+    border-radius: 4px;
+}
+
+.tooltip_title_jp {
+    padding: 6px 4px 0 4px;
+    font-size: 1.6rem;
+}
+
+.tooltip_title_jp.small {
+    font-size: 1.1rem;
+}
+
+.tooltip_title {
+    padding: 0 4px 0 6px;
+    font-size: 1.2rem;
+    color: #191970;
+}
+
+.tooltip_title.small {
+    font-size: 0.9rem;
+}
+
+.tooltip_year {
+    padding: 0 2px 0 4px;
+    font-size: 1.2rem;
+}
+
+.tooltip_name_jp {
+    padding: 4px 4px 0 4px;
+    font-size: 1.4rem;
+}
+
+.tooltip_name_jp.small {
+    font-size: 1.3rem;
+}
+
+.tooltip_name {
+    padding: 0 4px;
+    font-size: 1.2rem;
+    color: #191970;
+}
+
+.tooltip_born {
+    padding: 2px 2px 0 2px;
+    font-size: 1rem;
+}
+
+.tooltip_born span {
+    font-size: 0.9rem;
+}
+
+.tooltip_place {
+    padding: 0 2px 0 5px;
+    font-size: 0.7rem;
+}
