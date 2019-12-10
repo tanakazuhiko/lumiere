@@ -15,7 +15,6 @@ http://lumiere.gftd.me/index.html
 
 ### dependency
 - [d3.v5.js](https://d3js.org)
-- [TweenMax](https://greensock.com/tweenmax/)
 
 ### licence
 [MIT License](https://spdx.org/licenses/MIT)
