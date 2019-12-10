@@ -49,6 +49,10 @@ d3.json(directors_path).then(
                 // zoom
                 init_zoom();
 
+                // preload
+                window.onload = function() {
+                    // preload(directors, films);
+                }
                 // reset
                 e_reset.onclick = function() {
                     sort("born", films);
@@ -339,6 +343,18 @@ function init_zoom() {
     .on("zoom", zoomed);
 
     svg.call(zoom);
+}
+
+// preload
+function preload(directors, films) {
+    for (i = 0; i < directors.length; i++){
+        var img = document.createElement('img');
+        img.src = "../images/directors/" + directors[i].id + ".png";
+    }
+    for (i = 0; i < films.length; i++){
+        var img = document.createElement('img');
+        img.src = "../images/films/" + films[i].director_id + "/" + films[i].no + ".png";
+    }
 }
 
 // zoom

@@ -91,7 +91,6 @@ rect.born, rect.died, rect.film {
     position: absolute;
     left: 5px;
     text-align: right;
-    font-style: italic;
 }
 
 .header .title span.title_1 {
@@ -110,7 +109,6 @@ rect.born, rect.died, rect.film {
     left: 168px;
     width: 50px;
     text-align: right;
-    font-style: italic;
 }
 
 .header .title span.title_2 {
