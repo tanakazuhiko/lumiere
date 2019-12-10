@@ -321,14 +321,14 @@
     {
         "director_id": "mizoguchi",
         "no": 0,
-        "title": "Gion no shimai",
+        "title": "Sisters of the Gion",
         "title_jp": "祇園の姉妹",
         "year": "1936"
     },
     {
         "director_id": "mizoguchi",
         "no": 1,
-        "title": "Saikaku ichidai onna",
+        "title": "The Life of Oharu",
         "title_jp": "西鶴一代女",
         "year": "1952"
     },
@@ -445,21 +445,21 @@
     {
         "director_id": "ozu",
         "no": 0,
-        "title": "Hijosen no onna",
+        "title": "Dragnet Girl",
         "title_jp": "非常線の女",
         "year": "1933"
     },
     {
         "director_id": "ozu",
         "no": 1,
-        "title": "Chichi ariki",
+        "title": "There Was a Father",
         "title_jp": "父ありき",
         "year": "1942"
     },
     {
         "director_id": "ozu",
         "no": 2,
-        "title": "Banshun",
+        "title": "Late Spring",
         "title_jp": "晩春",
         "year": "1949"
     },
@@ -469,7 +469,7 @@
         "title": "Tokyo Story",
         "title_jp": "東京物語",
         "year": "1953",
-        "movie": "<iframe width=688 src=https://www.youtube.com/embed/LjDWc-lQYnM frameborder=0 allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'></iframe>"
+        "movie": "https://www.youtube.com/embed/LjDWc-lQYnM"
     },
 
     {
@@ -643,21 +643,21 @@
     {
         "director_id": "yamanaka",
         "no": 0,
-        "title": "Tangesazenyowa hyakumanryonotsubo",
+        "title": "The Million Ryo Pot",
         "title_jp": "丹下左膳余話 百萬両の壺",
         "year": "1935"
     },
     {
         "director_id": "yamanaka",
         "no": 1,
-        "title": "Kouchiyama soushun",
+        "title": "Kōchiyama Sōshun",
         "title_jp": "河内山宗俊",
         "year": "1936"
     },
     {
         "director_id": "yamanaka",
         "no": 2,
-        "title": "Ninjokamifusen",
+        "title": "Humanity and Paper Balloons",
         "title_jp": "人情紙風船",
         "year": "1937"
     },

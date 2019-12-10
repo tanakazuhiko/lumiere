@@ -68,7 +68,7 @@ rect.born, rect.died, rect.film {
 /* header */
 .header {
     height: 55px;
-    width: 1330px;
+    width: 100%;
     color: white;
     position: fixed;
     margin: 0;
@@ -99,21 +99,32 @@ rect.born, rect.died, rect.film {
     color: #a1a4ab;
 }
 
-.header .title span.age {
+.header .title span.live {
     font-size: 13px;
     font-weight: 300;
     font-style: normal;
     position: absolute;
     top: 27px;
-    left: 301px;
+    left: 285px;
+    width: 300px;
+    color: #a1a4ab;
+}
+
+.header .title span.age {
+    font-size: 12px;
+    font-weight: 300;
+    font-style: normal;
+    position: absolute;
+    top: 27px;
+    left: 436px;
     width: 300px;
     color: #a1a4ab;
 }
 
 .header .menu {
     position: absolute;
-    left: 528px;
-    top: 8px;
+    right: 0px;
+    top: 10px;
 }
 
 .header .menu .item {
@@ -185,12 +196,6 @@ rect.born, rect.died, rect.film {
 
 .died {
     fill: #444;
-}
-
-.live {
-      background: -moz-linear-gradient(left, #FFC778 50%, #FFF);
-      background: -webkit-linear-gradient(left, #FFC778 50%, #FFF);
-      background: linear-gradient(to right, #FFC778 50%, #FFF);
 }
 
 .film {

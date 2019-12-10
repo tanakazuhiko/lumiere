@@ -28,7 +28,7 @@ var margin = {top: 0, right: 0, bottom: 40, left: 0};
 var today = new Date();
 var width, height;
 var svg, rect, tooltip, zoom;
-var e_sort, e_reset, e_copyright, e_count_d, e_count_f, e_headline, e_age;
+var e_sort, e_reset, e_copyright, e_count_d, e_count_f, e_headline, e_live, e_age;
 var name, bar, born, died, film;
 var x, y, xAxis, yAxis, gX, gY;
 var directors, films;
@@ -77,10 +77,8 @@ function init(directors, films) {
     e_count_d = document.getElementById("count_d");
     e_count_f = document.getElementById("count_f");
     e_headline = document.getElementById("headline");
+    e_live = document.getElementById("live");
     e_age = document.getElementById("age");
-
-    // title
-    document.title = directors.length + " cinéastes et leurs " + films.length + " œuvres";
 
     // count
     var duration = 1000;
@@ -88,7 +86,9 @@ function init(directors, films) {
     var to = directors.length;
     var startTime = Date.now();
     var random = Math.round(Math.random() * to);
+    document.title = directors.length + " cinéastes et leurs " + films.length + " œuvres";
     document.body.style.backgroundImage = "url('../images/directors/" + directors[random].id + ".png')";
+    e_copyright.innerHTML = directors[random].copyright ? directors[random].copyright : "unknown";
     var timer = setInterval(() => {
         var elapsedTime = Date.now() - startTime;
         var progress = elapsedTime / duration;
@@ -96,19 +96,17 @@ function init(directors, films) {
             var count = Math.floor(from + progress * (to - from));
             var lavel = directors[count].died ? "aged" : "age";
             var age = directors[count].died ? directors[count].aged : calcAge(directors[count].born, today);
-            var str = directors[count].born + " - " + directors[count].died + " (" + lavel + ":" + age + ")";
             e_count_d.innerHTML = ("00" + count).slice(-2);
             e_headline.innerHTML = "::" + directors[count].name;
-            e_age.innerHTML = str;
+            e_live.innerHTML = directors[count].born + " - " + directors[count].died;
+            e_age.innerHTML = " (" + lavel + ":" + age + ")";
         } else {
             e_count_d.innerHTML = to;
             e_headline.innerHTML = "::" + directors[random].name;
-            var str = directors[random].copyright ? directors[random].copyright : "unknown";
-            e_copyright.innerHTML = str;
             var lavel = directors[random].died ? "aged" : "age";
             var age = directors[random].died ? directors[random].aged : calcAge(directors[random].born, today);
-            str = directors[random].born + " - " + directors[random].died + " (" + lavel + ":" + age + ")";
-            e_age.innerHTML = str;
+            e_live.innerHTML = directors[random].born + " - " + directors[random].died;
+            e_age.innerHTML = " (" + lavel + ":" + age + ")";
             clearInterval(timer);
         }
     }, 16);
@@ -368,6 +366,7 @@ function resetted() {
 
     document.body.style.backgroundImage = "";
     e_headline.innerHTML = "";
+    e_live.innerHTML = "";
     e_age.innerHTML = "";
     e_copyright.innerHTML = "";
     e_sort.options[1].selected = true;
@@ -385,11 +384,11 @@ function changeBg(director) {
 
     // name
     var str = director.name + "(" + director.born + "〜" + director.died + ")";
-    var age = director.died ? director.aged : calcAge(director.born, today);
     var lavel = director.died ? "aged" : "age";
-    str = director.born + " - " + director.died + " (" + lavel + ":" + age + ")";
+    var age = director.died ? director.aged : calcAge(director.born, today);
     e_headline.innerHTML = "::" + director.name;
-    e_age.innerHTML = str;
+    e_live.innerHTML = director.born + " - " + director.died;
+    e_age.innerHTML = " (" + lavel + ":" + age + ")";
 }
 
 // tooltip born
