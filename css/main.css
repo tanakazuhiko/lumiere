@@ -163,8 +163,8 @@ rect.born, rect.died, rect.film {
 
 .header .legend {
     position: absolute;
-    left: 660px;
-    top: 18px;
+    right: 180px;
+    top: 20px;
     color: #ddd;
     font-size: 10px;
     line-height: 12px;
@@ -178,31 +178,31 @@ rect.born, rect.died, rect.film {
     padding-left: 5px;
 }
 
-.header .legend .born.item {
+.header .legend .i_born.item {
     border-color: #f03b20;
 }
 
-.header .legend .died.item {
+.header .legend .i_died.item {
     border-color: #444;
 }
 
-.header .legend .film.item {
+.header .legend .i_film.item {
     border-color: #aaa;
 }
 
-.born {
+.i_born, .born {
     fill: #f03b20;
 }
 
-.died {
+.i_died, .died {
     fill: #444;
 }
 
-.film {
+.i_film, .film {
     fill: #aaa;
 }
 
-.born, .died, .film {
+.i_born, .i_died, .i_film, .born, .died, .film {
     opacity: 0.6;
 }
 
