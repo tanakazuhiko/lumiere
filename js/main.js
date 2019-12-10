@@ -49,6 +49,12 @@ d3.json(directors_path).then(
                 // zoom
                 init_zoom();
 
+                var str;
+                directors.filter(function(item, index){
+                    str += item.name_jp + " ";
+                });
+                console.log(str);
+
                 // reset
                 e_reset.onclick = function() {
                     sort("born", films);
