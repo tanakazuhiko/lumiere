@@ -49,12 +49,6 @@ d3.json(directors_path).then(
                 // zoom
                 init_zoom();
 
-                var str;
-                directors.filter(function(item, index){
-                    str += item.name_jp + " ";
-                });
-                console.log(str);
-
                 // reset
                 e_reset.onclick = function() {
                     sort("born", films);
@@ -87,47 +81,42 @@ function init(directors, films) {
     e_age = document.getElementById("age");
 
     // count
-    var duration = 1000;
     var from = 0;
-    var to = directors.length;
-    var startTime = Date.now();
-    var random = Math.round(Math.random() * to);
+    var random = Math.round(Math.random() * directors.length);
+    var lavel = directors[random].died ? "aged" : "age";
+    var age = directors[random].died ? directors[random].aged : calcAge(directors[random].born, today);
+
     document.title = directors.length + " cinéastes et leurs " + films.length + " œuvres";
     document.body.style.backgroundImage = "url('../images/directors/" + directors[random].id + ".png')";
     e_copyright.innerHTML = directors[random].copyright ? directors[random].copyright : "unknown";
-    var timer = setInterval(() => {
-        var elapsedTime = Date.now() - startTime;
-        var progress = elapsedTime / duration;
-        if (progress < 1) {
-            var count = Math.floor(from + progress * (to - from));
-            var lavel = directors[count].died ? "aged" : "age";
-            var age = directors[count].died ? directors[count].aged : calcAge(directors[count].born, today);
-            e_count_d.innerHTML = ("00" + count).slice(-2);
-            e_headline.innerHTML = "::" + directors[count].name;
-            e_live.innerHTML = directors[count].born + " - " + directors[count].died;
-            e_age.innerHTML = " (" + lavel + ":" + age + ")";
-        } else {
-            e_count_d.innerHTML = to;
-            e_headline.innerHTML = "::" + directors[random].name;
-            var lavel = directors[random].died ? "aged" : "age";
-            var age = directors[random].died ? directors[random].aged : calcAge(directors[random].born, today);
-            e_live.innerHTML = directors[random].born + " - " + directors[random].died;
-            e_age.innerHTML = " (" + lavel + ":" + age + ")";
-            clearInterval(timer);
-        }
-    }, 16);
+    e_live.innerHTML = directors[random].born + " - " + directors[random].died;
+    e_age.innerHTML = " (" + lavel + ":" + age + ")";
 
-    var to2 = films.length;
-    var timer2 = setInterval(() => {
-        var elapsedTime = Date.now() - startTime;
-        var progress = elapsedTime / duration;
-        if (progress < 1) {
-            e_count_f.innerHTML = ("000" + Math.floor(from + progress * (to2 - from))).slice(-3);
-        } else {
-            e_count_f.innerHTML = to2;
-            clearInterval(timer2);
+    var duration = 2;
+    var obj = { count: from };
+    TweenMax.to(obj, duration, {
+        count: directors.length,
+        ease: Power3.easeInOut,
+        onUpdate: () => {
+            var count = Math.floor(obj.count);
+            e_count_d.textContent = count;
+            if(count > 0)
+                e_headline.textContent = "::" + directors[count - 1].name;
+        },
+        onComplete : () => {
+            e_headline.innerHTML = "::" + directors[random].name;
+        },
+    });
+
+    var duration2 = 2;
+    var obj2 = { count: from };
+    TweenMax.to(obj2, duration2, {
+        count: films.length,
+        ease: Power3.easeInOut,
+        onUpdate: () => {
+            e_count_f.textContent = Math.floor(obj2.count);
         }
-    }, 16);
+    });
 
     // svg
     svg = d3

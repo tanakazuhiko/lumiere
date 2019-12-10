@@ -79,20 +79,55 @@ rect.born, rect.died, rect.film {
 .header .title {
     position: absolute;
     top: 8px;
-    left: 5px;
-    font-size: 20px;
-    font-weight: 100;
-    color: #ddd;
 }
 
 .header .title span {
     font-size: 26px;
-    font-weight: 500;
-    font-style: italic;
+    font-weight: 400;
     color: #a1a4ab;
 }
 
+.header .title span#count_d {
+    position: absolute;
+    left: 5px;
+    text-align: right;
+    font-style: italic;
+}
+
+.header .title span.title_1 {
+    position: absolute;
+    top: 5px;
+    left: 36px;
+    font-size: 20px;
+    font-weight: 100;
+    font-style: normal;
+    width: 200px;
+    color: #ddd;
+}
+
+.header .title span#count_f {
+    position: absolute;
+    left: 168px;
+    width: 50px;
+    text-align: right;
+    font-style: italic;
+}
+
+.header .title span.title_2 {
+    position: absolute;
+    top: 5px;
+    left: 219px;
+    font-size: 20px;
+    font-weight: 100;
+    font-style: normal;
+    width: 200px;
+    color: #ddd;
+}
+
 .header .title span.headline {
+    position: absolute;
+    left: 279px;
+    width: 500px;
     font-size: 26px;
     font-weight: 200;
     font-style: normal;
@@ -105,7 +140,7 @@ rect.born, rect.died, rect.film {
     font-style: normal;
     position: absolute;
     top: 27px;
-    left: 285px;
+    left: 292px;
     width: 300px;
     color: #a1a4ab;
 }
@@ -116,7 +151,7 @@ rect.born, rect.died, rect.film {
     font-style: normal;
     position: absolute;
     top: 27px;
-    left: 436px;
+    left: 442px;
     width: 300px;
     color: #a1a4ab;
 }

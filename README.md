@@ -14,7 +14,8 @@ http://lumiere.gftd.me/index.html
 - mouseover: show film information
 
 ### dependency
-[d3.v5.js](https://d3js.org)
+- [d3.v5.js](https://d3js.org)
+- [TweenMax](https://greensock.com/tweenmax/)
 
 ### licence
 [MIT License](https://spdx.org/licenses/MIT)
