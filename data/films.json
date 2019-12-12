@@ -302,6 +302,20 @@
         "title_jp": "悲しみは空の彼方に",
         "year": "1959"
     },
+    {
+        "director_id": "sirk",
+        "no": 1,
+        "title": "Zu neuen Ufern",
+        "title_jp": "世界の涯てに",
+        "year": "1936"
+    },
+    {
+        "director_id": "sirk",
+        "no": 2,
+        "title": "Written on the Wind",
+        "title_jp": "風と共に散る",
+        "year": "1956"
+    },
 
     {
         "director_id": "eisenstein",
@@ -980,8 +994,8 @@
     {
         "director_id": "schmid",
         "no": 1,
-        "title": "Mirage de la vie",
-        "title_jp": "人生の幻影",
+        "title": "Il bacio di Tosca",
+        "title_jp": "トスカの接吻",
         "year": "1983"
     },
     {
