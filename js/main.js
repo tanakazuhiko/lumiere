@@ -20,7 +20,7 @@ var offset_y = 20;
 var duration_sort = 1000;
 var duration_reset = 2000;
 var wait = 200;
-var sort_type = "born";
+var sort_type = "name";
 var timer = 0;
 var bg_image = "";
 var copyright = "The Lumiere Brothers, Auguste and Louis, showing their invention to scientists (1895).";
@@ -48,6 +48,11 @@ d3.json(directors_path).then(
                 sort(sort_type, films);
                 // zoom
                 init_zoom();
+                // re sort
+                sort_type = "born";
+                sort(sort_type, films);
+                // reset
+                resetted();
 
                 // preload
                 window.onload = function() {
@@ -301,7 +306,24 @@ function sort(sort_type, films) {
     .sort(compareValues(sort_type))
     .transition()
     .duration(duration_sort)
-    .attr("y", function(d, i) { return bar_y * (i + offset) + bar_height; });
+    .attr("x", function(d, i) {
+        if(sort_type == "id" || sort_type == "aged") {
+            return 100;
+        } else {
+            return x(formatDate(d.born)) - 4;
+        }
+    })
+    .attr("y", function(d, i) { return bar_y * (i + offset) + bar_height; })
+    .text(function(d, i) {
+        if(sort_type == "aged") {
+            var age = d.died ? d.aged : calcAge(d.born, today);
+            return d.name + ", " + age;
+        } else if(sort_type == "born_at") {
+            return d.name + ", " + d.born_at;
+        } else {
+            return d.name;
+        }
+    })
 
     // bar
     d3.selectAll(".bar")
@@ -340,24 +362,23 @@ function sort(sort_type, films) {
 
 // init_zoom
 function init_zoom() {
+    const [x, y] = [Math.floor(Math.random() * 50), Math.floor(Math.random() * 50)];
+
     zoom = d3
     .zoom()
     .scaleExtent([zoom_from, zoom_to])
-    .on("zoom", zoomed);
+    .on("zoom", zoomed)
 
     svg.call(zoom);
-}
 
-// preload
-function preload(directors, films) {
-    for (i = 0; i < directors.length; i++){
-        var img = document.createElement('img');
-        img.src = "../images/directors/" + directors[i].id + ".png";
-    }
-    for (i = 0; i < films.length; i++){
-        var img = document.createElement('img');
-        img.src = "../images/films/" + films[i].director_id + "/" + films[i].no + ".png";
-    }
+    var zoom2 = d3
+    .zoomIdentity
+    .translate(width / 2, height / 2)
+    .scale(50)
+    .translate(-1000, -500);
+
+    svg
+    .call(zoom.transform, zoom2);
 }
 
 // zoom
@@ -378,7 +399,7 @@ function resetted() {
     .duration(duration_reset)
     .call(zoom.transform, d3.zoomIdentity);
 
-    document.body.style.backgroundImage = "";
+    // document.body.style.backgroundImage = "";
     e_headline.innerHTML = "";
     e_live.innerHTML = "";
     e_age.innerHTML = "";
@@ -489,4 +510,16 @@ function getBorn(directors, id) {
         }
     });
     return born;
+}
+
+// preload
+function preload(directors, films) {
+    for (i = 0; i < directors.length; i++){
+        var img = document.createElement('img');
+        img.src = "../images/directors/" + directors[i].id + ".png";
+    }
+    for (i = 0; i < films.length; i++){
+        var img = document.createElement('img');
+        img.src = "../images/films/" + films[i].director_id + "/" + films[i].no + ".png";
+    }
 }
