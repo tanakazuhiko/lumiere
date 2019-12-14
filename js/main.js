@@ -6,6 +6,7 @@
 // variables
 var directors_path = "../data/directors.json";
 var films_path = "../data/films.json";
+var map_path = "../data/world-50m.json"
 var from = "1870";
 var to = "1950";
 var zoom_from = 0.01;
@@ -20,14 +21,15 @@ var offset_y = 20;
 var duration_sort = 1000;
 var duration_reset = 2000;
 var wait = 200;
-var sort_type = "name";
+var map_color = "#666464";
+var sort_type = "";
 var timer = 0;
 var bg_image = "";
 var copyright = "The Lumiere Brothers, Auguste and Louis, showing their invention to scientists (1895).";
 var margin = {top: 0, right: 0, bottom: 40, left: 0};
 var today = new Date();
 var width, height;
-var svg, rect, tooltip, zoom;
+var svg, rect, tooltip, zoom, zoom_map, g, g_map;
 var e_sort, e_reset, e_copyright, e_count_d, e_count_f, e_headline, e_live, e_age;
 var name, bar, born, died, film;
 var x, y, xAxis, yAxis, gX, gY;
@@ -45,28 +47,50 @@ d3.json(directors_path).then(
                 // draw
                 draw(directors, films);
                 // sort
-                sort(sort_type, films);
+                sort_type = "name";
+                sort(sort_type, directors, films);
                 // zoom
                 init_zoom();
                 // re sort
                 sort_type = "born";
-                sort(sort_type, films);
+                sort(sort_type, directors, films);
                 // reset
                 resetted();
 
-                // preload
-                window.onload = function() {
-                    // preload(directors, films);
+                // sort
+                e_sort.onchange = function() {
+                    d3.selectAll(".svg_map").remove();
+                    sort_type = this.options[this.selectedIndex].value;
+                    sort(sort_type, directors, films);
+
+                    if(sort_type == "born_at") {
+                        document.body.style.backgroundImage = "";
+                        e_headline.style.opacity = 0;
+                        e_live.style.opacity = 0;
+                        e_age.style.opacity = 0;
+
+                        d3.selectAll(".svg_main").attr("opacity", 0);
+                    } else {
+                        e_headline.style.opacity = 1;
+                        e_live.style.opacity = 1;
+                        e_age.style.opacity = 1;
+
+                        d3.selectAll(".svg_main")
+                        .transition()
+                        .duration(duration_sort)
+                        .attr("opacity", 1);
+                    }
                 }
                 // reset
                 e_reset.onclick = function() {
-                    sort("born", films);
+                    d3.selectAll(".svg_main").attr("opacity", 1);
+                    d3.selectAll(".svg_map").remove();
+                    e_headline.style.opacity = 1;
+                    e_live.style.opacity = 1;
+                    e_age.style.opacity = 1;
+
+                    sort("born", directors, films);
                     resetted();
-                }
-                // sort
-                e_sort.onchange = function() {
-                    sort_type = this.options[this.selectedIndex].value;
-                    sort(sort_type, films);
                 }
             }
         );
@@ -134,16 +158,17 @@ function init(directors, films) {
     svg = d3
     .select("body")
     .append("svg")
+    .attr("class", "svg_main")
     .attr("width", width)
-    .attr("height", height)
+    .attr("height", height);
 
     // rect
     rect = svg
     .append("rect")
-    .attr("width", width)
-    .attr("height", height)
     .attr("class", "rect")
     .attr("id", "rect")
+    .attr("width", width)
+    .attr("height", height);
 
     // tooltip
     tooltip = d3
@@ -189,8 +214,14 @@ function axis() {
 
 // draw
 function draw(directors, films) {
+    var g_name = svg.append("g").attr("class", "g_name");
+    var g_bar = svg.append("g").attr("class", "g_bar");
+    var g_born = svg.append("g").attr("class", "g_born");
+    var g_died = svg.append("g").attr("class", "g_died");
+    var g_film = svg.append("g").attr("class", "g_film");
+
     // name
-    name = svg
+    name = g_name
     .selectAll(".name")
     .data(directors)
     .enter()
@@ -201,7 +232,7 @@ function draw(directors, films) {
     .text(function(d) { return d.name; });
 
     // bar
-    bar = svg
+    bar = g_bar
     .selectAll(".bar")
     .data(directors)
     .enter()
@@ -217,7 +248,7 @@ function draw(directors, films) {
     .on("mouseover", function(d) { changeBg(d); });
 
     // born
-    born = svg
+    born = g_born
     .selectAll(".born")
     .data(directors)
     .enter()
@@ -243,7 +274,7 @@ function draw(directors, films) {
     });
 
     // died
-    died = svg
+    died = g_died
     .selectAll(".died")
     .data(directors)
     .enter()
@@ -272,7 +303,7 @@ function draw(directors, films) {
     });
 
     // film
-    film = svg
+    film = g_film
     .selectAll(".film")
     .data(films)
     .enter()
@@ -300,64 +331,123 @@ function draw(directors, films) {
 }
 
 // sort
-function sort(sort_type, films) {
-    // name
-    d3.selectAll(".name")
-    .sort(compareValues(sort_type))
-    .transition()
-    .duration(duration_sort)
-    .attr("x", function(d, i) {
-        if(sort_type == "id" || sort_type == "aged") {
-            return 100;
-        } else {
-            return x(formatDate(d.born)) - 4;
-        }
-    })
-    .attr("y", function(d, i) { return bar_y * (i + offset) + bar_height; })
-    .text(function(d, i) {
-        if(sort_type == "aged") {
-            var age = d.died ? d.aged : calcAge(d.born, today);
-            return d.name + ", " + age;
-        } else if(sort_type == "born_at") {
-            return d.name + ", " + d.born_at;
-        } else {
-            return d.name;
-        }
-    })
+function sort(sort_type, directors, films) {
+    if(sort_type == "born_at") {
+        var projection = d3
+        .geoMercator()
+        .translate([0, 100])
+        .scale(width / 2 / Math.PI);
 
-    // bar
-    d3.selectAll(".bar")
-    .sort(compareValues(sort_type))
-    .transition()
-    .duration(duration_sort)
-    .attr("y", function(d, i) { return bar_y * (i + offset); });
+        zoom_map = d3
+        .zoom()
+        .scaleExtent([1, 10])
+        .on("zoom", zoomed_map);
 
-    // born
-    d3.selectAll(".born")
-    .sort(compareValues(sort_type))
-    .transition()
-    .duration(duration_sort)
-    .attr("y", function(d, i) { return bar_y * (i + offset); });
+        var path = d3
+        .geoPath()
+        .projection(projection);
 
-    // died
-    d3.selectAll(".died")
-    .sort(compareValues(sort_type))
-    .transition()
-    .duration(duration_sort)
-    .attr("y", function(d, i) {
-        var id = (d && d.id) ? d.id : "";
-        var y = bar_y * (i + offset);
-        // film
-        films.filter(function(item, index){
-            if(item.director_id == id) {
-                d3.selectAll("." + id)
-                .transition()
-                .duration(duration_sort)
-                .attr("y", y);
+        svg_map = d3
+        .select("body")
+        .append("svg")
+        .attr("class", "svg_map")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+        .call(zoom_map);
+
+        g_map = svg_map
+        .append("g")
+        .attr("class", "g_map");
+
+        svg_map
+        .append("rect")
+        .attr("class", "overlay")
+        .attr("x", -width / 2)
+        .attr("y", -height / 2)
+        .attr("width", width)
+        .attr("height", height);
+
+        d3.json(map_path).then(
+            function(world) {
+                g_map
+                .append("path")
+                .datum(topojson.feature(world, world.objects.countries))
+                .attr("class", "land")
+                .attr("d", path);
+
+                // name
+                g_map
+                .selectAll(".name_map")
+                .data(directors)
+                .enter()
+                .append("text")
+                .attr("class", "name_map")
+                .attr("x", function(d) { return d.born_x; })
+                .attr("y", function(d, i) { return d.born_y; })
+                .text(function(d) { return d.name + ", " + d.born_at; });
             }
+        );
+    } else {
+        // name
+        d3.selectAll(".name")
+        .sort(compareValues(sort_type))
+        .transition()
+        .duration(duration_sort)
+        .attr("x", function(d, i) {
+            if(sort_type == "id" || sort_type == "aged") {
+                return 100;
+            } else {
+                return x(formatDate(d.born)) - 4;
+            }
+        })
+        .attr("y", function(d, i) { return bar_y * (i + offset) + bar_height; })
+        .text(function(d, i) {
+            if(sort_type == "aged") {
+                var age = d.died ? d.aged : calcAge(d.born, today);
+                return d.name + ", " + age;
+            } else if(sort_type == "born_at") {
+                return d.name + ", " + d.born_at;
+            } else {
+                return d.name;
+            }
+        })
+
+        // bar
+        d3.selectAll(".bar")
+        .sort(compareValues(sort_type))
+        .transition()
+        .duration(duration_sort)
+        .attr("y", function(d, i) { return bar_y * (i + offset); });
+
+        // born
+        d3.selectAll(".born")
+        .sort(compareValues(sort_type))
+        .transition()
+        .duration(duration_sort)
+        .attr("y", function(d, i) { return bar_y * (i + offset); });
+
+        // died
+        d3.selectAll(".died")
+        .sort(compareValues(sort_type))
+        .transition()
+        .duration(duration_sort)
+        .attr("y", function(d, i) {
+            var id = (d && d.id) ? d.id : "";
+            var y = bar_y * (i + offset);
+            // film
+            films.filter(function(item, index){
+                if(item.director_id == id) {
+                    d3.selectAll("." + id)
+                    .transition()
+                    .duration(duration_sort)
+                    .attr("y", y);
+                }
+            });
+            return y;
         });
-        return y;
-    });
+    }
 }
 
 // init_zoom
@@ -377,8 +467,7 @@ function init_zoom() {
     .scale(50)
     .translate(-1000, -500);
 
-    svg
-    .call(zoom.transform, zoom2);
+    svg.call(zoom.transform, zoom2);
 }
 
 // zoom
@@ -392,6 +481,15 @@ function zoomed() {
     svg.selectAll(".film").attr("transform", d3.event.transform);
 }
 
+// zoom map
+function zoomed_map() {
+    var t = d3.event.transform;
+    var s = t.k;
+    t.x = Math.min(width / 2 * (s - 1), Math.max(width / 2 * (1 - s), t.x));
+    t.y = Math.min(height / 2 * (s - 1) + 230 * s, Math.max(height / 2 * (1 - s) - 230 * s, t.y));
+    g_map.attr("transform", d3.event.transform);
+}
+
 // reset
 function resetted() {
     svg
@@ -399,7 +497,6 @@ function resetted() {
     .duration(duration_reset)
     .call(zoom.transform, d3.zoomIdentity);
 
-    // document.body.style.backgroundImage = "";
     e_headline.innerHTML = "";
     e_live.innerHTML = "";
     e_age.innerHTML = "";

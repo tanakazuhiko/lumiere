@@ -6,6 +6,8 @@
         "born": "1894-09-15",
         "died": "1979-02-12",
         "born_at": "France, Paris",
+        "born_x": 50,
+        "born_y": -100,
         "died_at": "U.S., Beverly Hills",
         "aged": 84,
         "copyright": ""
@@ -17,6 +19,8 @@
         "born": "1894-02-01",
         "died": "1973-08-31",
         "born_at": "U.S., Cape Elizabeth",
+        "born_x": -300,
+        "born_y": -100,
         "died_at": "U.S., California",
         "aged": 79,
         "copyright": "copyright Allen C. Reed for Arizona Highways Magazine"

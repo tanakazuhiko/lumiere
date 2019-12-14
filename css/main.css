@@ -55,6 +55,17 @@ a:hover {
     text-anchor: end;
     cursor: default;
     margin-right: 4px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.name_map {
+    fill: #aaa;
+    cursor: default;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 200;
 }
 
 rect.born, rect.died, rect.film {
@@ -74,6 +85,7 @@ rect.born, rect.died, rect.film {
     margin: 0;
     background-color: #222;
     cursor: default;
+    opacity: 0.92;
 }
 
 .header .title {
@@ -380,4 +392,28 @@ line {
 .tooltip_place {
     padding: 0 2px 0 5px;
     font-size: 0.7rem;
+}
+
+/* map */
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.land {
+  fill: #000;
+}
+
+.boundary {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.svg_map {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #636161;
 }
