@@ -60,14 +60,6 @@ a:hover {
     font-weight: 200;
 }
 
-.name_map {
-    fill: #aaa;
-    cursor: default;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 12px;
-    font-weight: 200;
-}
-
 rect.born, rect.died, rect.film {
     cursor: pointer;
 }
@@ -416,4 +408,20 @@ line {
     top: 0px;
     left: 0px;
     background-color: #636161;
+}
+
+.area_map {
+    font-size: 1pt;
+    fill: #f03b20;
+    cursor: default;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 200;
+}
+
+.name_map {
+    font-size: 1pt;
+    fill: #aaa;
+    cursor: default;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 200;
 }

@@ -6,112 +6,20 @@
         "born": "1894-09-15",
         "died": "1979-02-12",
         "born_at": "France, Paris",
-        "born_x": 50,
-        "born_y": -100,
         "died_at": "U.S., Beverly Hills",
         "aged": 84,
         "copyright": ""
     },
     {
-        "id": "ford",
-        "name": "John Ford",
-        "name_jp": "ジョン・フォード",
-        "born": "1894-02-01",
-        "died": "1973-08-31",
-        "born_at": "U.S., Cape Elizabeth",
-        "born_x": -300,
-        "born_y": -100,
-        "died_at": "U.S., California",
-        "aged": 79,
-        "copyright": "copyright Allen C. Reed for Arizona Highways Magazine"
-    },
-    {
-        "id": "ozu",
-        "name": "Yasujiro Ozu",
-        "name_jp": "小津 安二郎",
-        "born": "1903-12-12",
-        "died": "1963-12-12",
-        "born_at": "Japan, Tokyo",
-        "died_at": "Japan, Tokyo",
-        "aged": 60,
-        "copyright": "copyright 公益財団法人　川喜多記念映画文化財団"
-    },
-    {
-        "id": "rossellini",
-        "name": "Roberto Rossellini",
-        "name_jp": "ロベルト・ロッセリーニ",
-        "born": "1906-05-08",
-        "died": "1977-06-03",
-        "born_at": "Kingdom of Italy, Rome",
-        "died_at": "Italy, Rome",
-        "aged": 71,
-        "copyright": "Germania anno zero"
-    },
-    {
-        "id": "hitchcock",
-        "name": "Alfred Hitchcock",
-        "name_jp": "アルフレッド・ヒッチコック",
-        "born": "1899-08-13",
-        "died": "1980-04-29",
-        "born_at": "England, Essex",
-        "died_at": "U.S., California",
-        "aged": 80,
-        "copyright": "Behind the Scenes: Psycho (1960)"
-    },
-    {
-        "id": "hawks",
-        "name": "Howard Hawks",
-        "name_jp": "ハワード・ホークス",
-        "born": "1896-05-30",
-        "died": "1977-12-26",
-        "born_at": "U.S., Indiana",
-        "died_at": "U.S., California",
-        "aged": 81,
+        "id": "vigo",
+        "name": "Jean Vigo",
+        "name_jp": "ジャン・ヴィゴ",
+        "born": "1905-04-26",
+        "died": "1934-10-05",
+        "born_at": "France, Paris",
+        "died_at": "France, Paris",
+        "aged": 29,
         "copyright": ""
-    },
-    {
-        "id": "lang",
-        "name": "Fritz Lang",
-        "name_jp": "フリッツ・ラング",
-        "born": "1890-12-05",
-        "died": "1976-08-02",
-        "born_at": "Austria-Hungary, Vienna",
-        "died_at": "U.S., California",
-        "aged": 85,
-        "copyright": "Fritz Lang bei Dreharbeiten"
-    },
-    {
-        "id": "murnau",
-        "name": "F.W. Murnau",
-        "name_jp": "F.W.ムルナウ",
-        "born": "1888-12-28",
-        "died": "1931-03-11",
-        "born_at": "Germany, Bielefeld",
-        "died_at": "U.S., California",
-        "aged": 42,
-        "copyright": "unknown, 1920"
-    },
-    {
-        "id": "bunuel",
-        "name": "Luis Bunuel",
-        "name_jp": "ルイス・ブニュエル",
-        "born": "1900-02-22",
-        "died": "1983-07-29",
-        "born_at": "Spain",
-        "died_at": "Mexico",
-        "aged": 83,
-        "copyright": "Mary Evans Picture Library Ltd/AGE fotostock"
-    },
-    {
-        "id": "ophuls",
-        "name": "Max Ophuls",
-        "name_jp": "マックス・オフュルス",
-        "born": "1902-05-06",
-        "died": "1957-03-26",
-        "born_at": "German Empire, Saarbrücken",
-        "died_at": "West Germany, Hamburg",
-        "aged": 54,
-        "copyright": "Joan Fontaine and Max Ophüls in Letter from an Unknown Woman (1948)"
     },
     {
         "id": "becker",
@@ -123,105 +31,6 @@
         "died_at": "France, Paris",
         "aged": 53,
         "copyright": "Photograph from Alamy"
-    },
-    {
-        "id": "welles",
-        "name": "Orson Welles",
-        "name_jp": "オーソン・ウェルズ",
-        "born": "1915-05-06",
-        "died": "1985-10-10",
-        "born_at": "U.S., Wisconsin",
-        "died_at": "U.S., California",
-        "aged": 70,
-        "copyright": "Copyright REUTERS/TCM/Handout"
-    },
-    {
-        "id": "mizoguchi",
-        "name": "Kenji Mizoguchi",
-        "name_jp": "溝口 健二",
-        "born": "1898-05-16",
-        "died": "1956-08-24",
-        "born_at": "Japan, Tokyo",
-        "died_at": "Japan, Kyoto",
-        "aged": 58,
-        "copyright": ""
-    },
-    {
-        "id": "yamanaka",
-        "name": "Sadao Yamanaka",
-        "name_jp": "山中 貞雄",
-        "born": "1909-11-07",
-        "died": "1938-09-17",
-        "born_at": "Japan, Kyoto",
-        "died_at": "China",
-        "aged": 28,
-        "copyright": ""
-    },
-    {
-        "id": "naruse",
-        "name": "Mikio Naruse",
-        "name_jp": "成瀬 巳喜男",
-        "born": "1905-08-20",
-        "died": "1969-07-02",
-        "born_at": "Japan, Tokyo",
-        "died_at": "Japan, Tokyo",
-        "aged": 63,
-        "copyright": "『放浪記』(1962)撮影中"
-    },
-    {
-        "id": "dreyer",
-        "name": "Carl Theodor Dreyer",
-        "name_jp": "カール・テオドア・ドライヤー",
-        "born": "1889-02-03",
-        "died": "1968-03-20",
-        "born_at": "Denmark",
-        "died_at": "Denmark",
-        "aged": 79,
-        "copyright": "Vampyr (1932) | The Criterion Collection"
-    },
-    {
-        "id": "eisenstein",
-        "name": "Sergei Eisenstein",
-        "name_jp": "セルゲイ・エイゼンシュテイン",
-        "born": "1898-01-22",
-        "died": "1948-02-11",
-        "born_at": "Russian Empire",
-        "died_at": "Soviet",
-        "aged": 50,
-        "copyright": "Camera operator Andrei Moskvin and Sergei Eisenstein on the set of Ivan the Terrible"
-    },
-    {
-        "id": "lubitsch",
-        "name": "Ernst Lubitsch",
-        "name_jp": "エルンスト・ルビッチ",
-        "born": "1892-01-29",
-        "died": "1947-11-30",
-        "born_at": "German Empire",
-        "died_at": "U.S., Hollywood",
-        "aged": 55,
-        "copyright": "Ernst Lubitsch directs Marlene Dietrich on the set of ‘Angel’ (1937). Alamy"
-    },
-    {
-        "id": "walsh",
-        "name": "Raoul Walsh",
-        "name_jp": "ラオール・ウォルシュ",
-        "born": "1887-03-11",
-        "died": "1980-12-31",
-        "born_at": "U.S., New York",
-        "died_at": "U.S., California",
-        "aged": 93,
-        "copyright": ""
-    },
-    {
-        "id": "mann",
-        "name": "Anthony Mann",
-        "name_jp": "アンソニー・マン",
-        "born": "1906-06-30",
-        "died": "1967-04-29",
-        "born_at": "U.S., California",
-        "died_at": "Germany, Berlin",
-        "aged": 60,
-        "copyright": ""
     },
     {
         "id": "godard",
@@ -257,17 +66,6 @@
         "copyright": ""
     },
     {
-        "id": "bertolucci",
-        "name": "Bernardo Bertolucci",
-        "name_jp": "ベルナルド・ベルトルッチ",
-        "born": "1941-03-16",
-        "died": "2018-11-26",
-        "born_at": "Kingdom of Italy, Parma",
-        "died_at": "Italy, Rome",
-        "aged": 77,
-        "copyright": ""
-    },
-    {
         "id": "demy",
         "name": "Jacques Demy",
         "name_jp": "ジャック・ドゥミ",
@@ -277,61 +75,6 @@
         "died_at": "France, Paris",
         "aged": 59,
         "copyright": "Jacques Demy filming The Umbrellas of Cherbourg (1964)"
-    },
-    {
-        "id": "ray",
-        "name": "Nicholas Ray",
-        "name_jp": "ニコラス・レイ",
-        "born": "1911-08-07",
-        "died": "1979-06-16",
-        "born_at": "U.S., Galesville",
-        "died_at": "U.S., New York",
-        "aged": 67,
-        "copyright": "Isn’t it about time we got around to Nicholas Ray’s Johnny Guitar"
-    },
-    {
-        "id": "losey",
-        "name": "Joseph Losey",
-        "name_jp": "ジョセフ・ロージー",
-        "born": "1909-01-14",
-        "died": "1984-06-22",
-        "born_at": "U.S., Wisconsin",
-        "died_at": "England, London",
-        "aged": 75,
-        "copyright": ""
-    },
-    {
-        "id": "erice",
-        "name": "Victor Erice",
-        "name_jp": "ヴィクトル・エリセ",
-        "born": "1940-06-30",
-        "died": "",
-        "born_at": "Spain, Karrantza",
-        "died_at": "(Spain)",
-        "aged": 79,
-        "copyright": ""
-    },
-    {
-        "id": "schmid",
-        "name": "Daniel Schmid",
-        "name_jp": "ダニエル・シュミット",
-        "born": "1941-12-26",
-        "died": "2006-08-05",
-        "born_at": "Switzerland",
-        "died_at": "Switzerland",
-        "aged": 64,
-        "copyright": "© Martine Franck/Magnum Photos"
-    },
-    {
-        "id": "wenders",
-        "name": "Wim Wenders",
-        "name_jp": "ヴィム・ヴェンダース",
-        "born": "1945-08-14",
-        "died": "",
-        "born_at": "Germany, Dusseldorf",
-        "died_at": "(Germany)",
-        "aged": 74,
-        "copyright": ""
     },
     {
         "id": "eustache",
@@ -356,15 +99,159 @@
         "copyright": ""
     },
     {
-        "id": "jarmusch",
-        "name": "Jim Jarmusch",
-        "name_jp": "ジム・ジャームッシュ",
-        "born": "1953-01-22",
+        "id": "straub-huillet",
+        "name": "Straub-Huillet",
+        "name_jp": "ストローブ＝ユイレ",
+        "born": "1933-01-08",
         "died": "",
-        "born_at": "U.S., Ohio",
-        "died_at": "(U.S., New York)",
-        "aged": 66,
+        "born_at": "France, Metz",
+        "died_at": "",
+        "aged": 86,
         "copyright": ""
+    },
+
+    {
+        "id": "rossellini",
+        "name": "Roberto Rossellini",
+        "name_jp": "ロベルト・ロッセリーニ",
+        "born": "1906-05-08",
+        "died": "1977-06-03",
+        "born_at": "Italy, Rome",
+        "died_at": "Italy, Rome",
+        "aged": 71,
+        "copyright": "Germania anno zero"
+    },
+    {
+        "id": "bertolucci",
+        "name": "Bernardo Bertolucci",
+        "name_jp": "ベルナルド・ベルトルッチ",
+        "born": "1941-03-16",
+        "died": "2018-11-26",
+        "born_at": "Italy, Parma",
+        "died_at": "Italy, Rome",
+        "aged": 77,
+        "copyright": ""
+    },
+    {
+        "id": "hitchcock",
+        "name": "Alfred Hitchcock",
+        "name_jp": "アルフレッド・ヒッチコック",
+        "born": "1899-08-13",
+        "died": "1980-04-29",
+        "born_at": "England, Essex",
+        "died_at": "U.S., California",
+        "aged": 80,
+        "copyright": "Behind the Scenes: Psycho (1960)"
+    },
+    {
+        "id": "lang",
+        "name": "Fritz Lang",
+        "name_jp": "フリッツ・ラング",
+        "born": "1890-12-05",
+        "died": "1976-08-02",
+        "born_at": "Austria, Vienna",
+        "died_at": "U.S., California",
+        "aged": 85,
+        "copyright": "Fritz Lang bei Dreharbeiten"
+    },
+    {
+        "id": "murnau",
+        "name": "F.W. Murnau",
+        "name_jp": "F.W.ムルナウ",
+        "born": "1888-12-28",
+        "died": "1931-03-11",
+        "born_at": "Germany, Bielefeld",
+        "died_at": "U.S., California",
+        "aged": 42,
+        "copyright": "unknown, 1920"
+    },
+    {
+        "id": "lubitsch",
+        "name": "Ernst Lubitsch",
+        "name_jp": "エルンスト・ルビッチ",
+        "born": "1892-01-29",
+        "died": "1947-11-30",
+        "born_at": "Germany, Berlin",
+        "died_at": "U.S., Hollywood",
+        "aged": 55,
+        "copyright": "Ernst Lubitsch directs Marlene Dietrich on the set of ‘Angel’ (1937). Alamy"
+    },
+    {
+        "id": "sirk",
+        "name": "Douglas Sirk",
+        "name_jp": "ダグラス・サーク",
+        "born": "1897-04-26",
+        "died": "1987-01-14",
+        "born_at": "Germany, Hamburg",
+        "died_at": "Switzerland",
+        "aged": 89,
+        "copyright": "Jane Wyman and Douglas Sirk on the set of All That Heaven Allows"
+    },
+    {
+        "id": "ophuls",
+        "name": "Max Ophuls",
+        "name_jp": "マックス・オフュルス",
+        "born": "1902-05-06",
+        "died": "1957-03-26",
+        "born_at": "Germany, Saarbrücken",
+        "died_at": "West Germany, Hamburg",
+        "aged": 54,
+        "copyright": "Joan Fontaine and Max Ophüls in Letter from an Unknown Woman (1948)"
+    },
+    {
+        "id": "wenders",
+        "name": "Wim Wenders",
+        "name_jp": "ヴィム・ヴェンダース",
+        "born": "1945-08-14",
+        "died": "",
+        "born_at": "Germany, Dusseldorf",
+        "died_at": "(Germany)",
+        "aged": 74,
+        "copyright": ""
+    },
+    {
+        "id": "dreyer",
+        "name": "Carl Theodor Dreyer",
+        "name_jp": "カール・テオドア・ドライヤー",
+        "born": "1889-02-03",
+        "died": "1968-03-20",
+        "born_at": "Denmark, Copenhagen",
+        "died_at": "Denmark, Copenhagen",
+        "aged": 79,
+        "copyright": "Vampyr (1932) | The Criterion Collection"
+    },
+    {
+        "id": "bunuel",
+        "name": "Luis Bunuel",
+        "name_jp": "ルイス・ブニュエル",
+        "born": "1900-02-22",
+        "died": "1983-07-29",
+        "born_at": "Spain, Calanda",
+        "died_at": "Mexico",
+        "aged": 83,
+        "copyright": "Mary Evans Picture Library Ltd/AGE fotostock"
+    },
+    {
+        "id": "erice",
+        "name": "Victor Erice",
+        "name_jp": "ヴィクトル・エリセ",
+        "born": "1940-06-30",
+        "died": "",
+        "born_at": "Spain, Karrantza",
+        "died_at": "(Spain)",
+        "aged": 79,
+        "copyright": ""
+    },
+    {
+        "id": "schmid",
+        "name": "Daniel Schmid",
+        "name_jp": "ダニエル・シュミット",
+        "born": "1941-12-26",
+        "died": "2006-08-05",
+        "born_at": "Switzerland, Flims-Waldhaus",
+        "died_at": "Switzerland, Flims-Waldhaus",
+        "aged": 64,
+        "copyright": "© Martine Franck/Magnum Photos"
     },
     {
         "id": "angelopoulos",
@@ -378,6 +265,242 @@
         "copyright": "Crédits : Jérôme Prebois - Getty"
     },
     {
+        "id": "oliveira",
+        "name": "Manoel de Oliveira",
+        "name_jp": "マノエル・ド・オリヴェイラ",
+        "born": "1908-12-11",
+        "died": "2015-04-02",
+        "born_at": "Portugal, Porto",
+        "died_at": "Portugal, Porto",
+        "aged": 106,
+        "copyright": ""
+    },
+    {
+        "id": "costa",
+        "name": "Pedro Costa",
+        "name_jp": "ペドロ・コスタ",
+        "born": "1958-12-30",
+        "died": "",
+        "born_at": "Portugal, Lisbon",
+        "died_at": "(Portugual)",
+        "aged": 60,
+        "copyright": ""
+    },
+
+    {
+        "id": "eisenstein",
+        "name": "Sergei Eisenstein",
+        "name_jp": "セルゲイ・エイゼンシュテイン",
+        "born": "1898-01-22",
+        "died": "1948-02-11",
+        "born_at": "Soviet, Riga",
+        "died_at": "Soviet, Moscow",
+        "aged": 50,
+        "copyright": "Camera operator Andrei Moskvin and Sergei Eisenstein on the set of Ivan the Terrible"
+    },
+    {
+        "id": "sokurov",
+        "name": "Aleksandr Sokurov",
+        "name_jp": "アレクサンドル・ソクーロフ",
+        "born": "1951-06-14",
+        "died": "",
+        "born_at": "Soviet, Podorvikha",
+        "died_at": "",
+        "aged": 68,
+        "copyright": ""
+    },
+
+    {
+        "id": "hou",
+        "name": "Hou Hsiao-hsien",
+        "name_jp": "侯孝賢",
+        "born": "1947-04-08",
+        "died": "",
+        "born_at": "China, Mei County",
+        "died_at": "(Taiwan)",
+        "aged": 72,
+        "copyright": ""
+    },
+    {
+        "id": "yang",
+        "name": "Edward Yang",
+        "name_jp": "楊德昌",
+        "born": "1947-11-06",
+        "died": "2007-06-29",
+        "born_at": "China, Shanghai",
+        "died_at": "U.S., California",
+        "aged": 59,
+        "copyright": ""
+    },
+    {
+        "id": "zhangke",
+        "name": "Jia Zhangke",
+        "name_jp": "ジャ・ジャンクー",
+        "born": "1970-05-24",
+        "died": "",
+        "born_at": "China, Shangxi",
+        "died_at": "(China)",
+        "aged": 49,
+        "copyright": ""
+    },
+
+    {
+        "id": "mizoguchi",
+        "name": "Kenji Mizoguchi",
+        "name_jp": "溝口 健二",
+        "born": "1898-05-16",
+        "died": "1956-08-24",
+        "born_at": "Japan, Tokyo",
+        "died_at": "Japan, Kyoto",
+        "aged": 58,
+        "copyright": ""
+    },
+    {
+        "id": "ozu",
+        "name": "Yasujiro Ozu",
+        "name_jp": "小津 安二郎",
+        "born": "1903-12-12",
+        "died": "1963-12-12",
+        "born_at": "Japan, Tokyo",
+        "died_at": "Japan, Tokyo",
+        "aged": 60,
+        "copyright": "copyright 公益財団法人　川喜多記念映画文化財団"
+    },
+    {
+        "id": "yamanaka",
+        "name": "Sadao Yamanaka",
+        "name_jp": "山中 貞雄",
+        "born": "1909-11-07",
+        "died": "1938-09-17",
+        "born_at": "Japan, Kyoto",
+        "died_at": "China",
+        "aged": 28,
+        "copyright": ""
+    },
+    {
+        "id": "naruse",
+        "name": "Mikio Naruse",
+        "name_jp": "成瀬 巳喜男",
+        "born": "1905-08-20",
+        "died": "1969-07-02",
+        "born_at": "Japan, Tokyo",
+        "died_at": "Japan, Tokyo",
+        "aged": 63,
+        "copyright": "『放浪記』(1962)撮影中"
+    },
+    {
+        "id": "kurosawa",
+        "name": "Kiyoshi Kurosawa",
+        "name_jp": "黒沢 清",
+        "born": "1955-07-19",
+        "died": "",
+        "born_at": "Japan, Kobe",
+        "died_at": "(Japan)",
+        "aged": 64,
+        "copyright": ""
+    },
+    {
+        "id": "aoyama",
+        "name": "Shinji Aoyama",
+        "name_jp": "青山 真治",
+        "born": "1964-07-13",
+        "died": "",
+        "born_at": "Japan, Kitakyushu",
+        "died_at": "(Japan)",
+        "aged": 55,
+        "copyright": ""
+    },
+
+    {
+        "id": "ford",
+        "name": "John Ford",
+        "name_jp": "ジョン・フォード",
+        "born": "1894-02-01",
+        "died": "1973-08-31",
+        "born_at": "U.S., Cape Elizabeth",
+        "died_at": "U.S., California",
+        "aged": 79,
+        "copyright": "copyright Allen C. Reed for Arizona Highways Magazine"
+    },
+    {
+        "id": "hawks",
+        "name": "Howard Hawks",
+        "name_jp": "ハワード・ホークス",
+        "born": "1896-05-30",
+        "died": "1977-12-26",
+        "born_at": "U.S., Indiana",
+        "died_at": "U.S., California",
+        "aged": 81,
+        "copyright": ""
+    },
+    {
+        "id": "welles",
+        "name": "Orson Welles",
+        "name_jp": "オーソン・ウェルズ",
+        "born": "1915-05-06",
+        "died": "1985-10-10",
+        "born_at": "U.S., Wisconsin",
+        "died_at": "U.S., California",
+        "aged": 70,
+        "copyright": "Copyright REUTERS/TCM/Handout"
+    },
+
+    {
+        "id": "walsh",
+        "name": "Raoul Walsh",
+        "name_jp": "ラオール・ウォルシュ",
+        "born": "1887-03-11",
+        "died": "1980-12-31",
+        "born_at": "U.S., New York",
+        "died_at": "U.S., California",
+        "aged": 93,
+        "copyright": ""
+    },
+    {
+        "id": "mann",
+        "name": "Anthony Mann",
+        "name_jp": "アンソニー・マン",
+        "born": "1906-06-30",
+        "died": "1967-04-29",
+        "born_at": "U.S., California",
+        "died_at": "Germany, Berlin",
+        "aged": 60,
+        "copyright": ""
+    },
+    {
+        "id": "ray",
+        "name": "Nicholas Ray",
+        "name_jp": "ニコラス・レイ",
+        "born": "1911-08-07",
+        "died": "1979-06-16",
+        "born_at": "U.S., Galesville",
+        "died_at": "U.S., New York",
+        "aged": 67,
+        "copyright": "Isn’t it about time we got around to Nicholas Ray’s Johnny Guitar"
+    },
+    {
+        "id": "losey",
+        "name": "Joseph Losey",
+        "name_jp": "ジョセフ・ロージー",
+        "born": "1909-01-14",
+        "died": "1984-06-22",
+        "born_at": "U.S., Wisconsin",
+        "died_at": "England, London",
+        "aged": 75,
+        "copyright": ""
+    },
+    {
+        "id": "jarmusch",
+        "name": "Jim Jarmusch",
+        "name_jp": "ジム・ジャームッシュ",
+        "born": "1953-01-22",
+        "died": "",
+        "born_at": "U.S., Ohio",
+        "died_at": "(U.S., New York)",
+        "aged": 66,
+        "copyright": ""
+    },
+    {
         "id": "altman",
         "name": "Robert Altman",
         "name_jp": "ロバート・アルトマン",
@@ -387,17 +510,6 @@
         "died_at": "U.S., California",
         "aged": 81,
         "copyright": "Copyright REUTERS/AMPAS/United Artists/Handout"
-    },
-    {
-        "id": "sirk",
-        "name": "Douglas Sirk",
-        "name_jp": "ダグラス・サーク",
-        "born": "1897-04-26",
-        "died": "1987-01-14",
-        "born_at": "German Empire, Hamburg",
-        "died_at": "Switzerland",
-        "aged": 89,
-        "copyright": "Jane Wyman and Douglas Sirk on the set of All That Heaven Allows"
     },
     {
         "id": "fuller",
@@ -422,50 +534,6 @@
         "copyright": ""
     },
     {
-        "id": "kurosawa",
-        "name": "Kiyoshi Kurosawa",
-        "name_jp": "黒沢 清",
-        "born": "1955-07-19",
-        "died": "",
-        "born_at": "Japan, Kobe",
-        "died_at": "(Japan)",
-        "aged": 64,
-        "copyright": ""
-    },
-    {
-        "id": "aoyama",
-        "name": "Shinji Aoyama",
-        "name_jp": "青山 真治",
-        "born": "1964-07-13",
-        "died": "",
-        "born_at": "Japan, Kitakyushu",
-        "died_at": "(Japan)",
-        "aged": 55,
-        "copyright": ""
-    },
-    {
-        "id": "hou",
-        "name": "Hou Hsiao-hsien",
-        "name_jp": "侯孝賢",
-        "born": "1947-04-08",
-        "died": "",
-        "born_at": "China, Mei County",
-        "died_at": "(Taiwan)",
-        "aged": 72,
-        "copyright": ""
-    },
-    {
-        "id": "costa",
-        "name": "Pedro Costa",
-        "name_jp": "ペドロ・コスタ",
-        "born": "1958-12-30",
-        "died": "",
-        "born_at": "Portugal, Lisbon",
-        "died_at": "(Portugual)",
-        "aged": 60,
-        "copyright": ""
-    },
-    {
         "id": "eastwood",
         "name": "Clint Eastwood",
         "name_jp": "クリント・イーストウッド",
@@ -474,17 +542,6 @@
         "born_at": "U.S., California",
         "died_at": "(U.S.)",
         "aged": 89,
-        "copyright": ""
-    },
-    {
-        "id": "oliveira",
-        "name": "Manoel de Oliveira",
-        "name_jp": "マノエル・ド・オリヴェイラ",
-        "born": "1908-12-11",
-        "died": "2015-04-02",
-        "born_at": "Kingdom of Portugal",
-        "died_at": "Portugal, Porto",
-        "aged": 106,
         "copyright": ""
     },
     {
@@ -497,60 +554,5 @@
         "died_at": "U.S., Hollywood",
         "aged": 73,
         "copyright": "D.W. Griffith, Billy Bitzer and Karl Brown"
-    },
-    {
-        "id": "vigo",
-        "name": "Jean Vigo",
-        "name_jp": "ジャン・ヴィゴ",
-        "born": "1905-04-26",
-        "died": "1934-10-05",
-        "born_at": "France, Paris",
-        "died_at": "France, Paris",
-        "aged": 29,
-        "copyright": ""
-    },
-    {
-        "id": "sokurov",
-        "name": "Aleksandr Sokurov",
-        "name_jp": "アレクサンドル・ソクーロフ",
-        "born": "1951-06-14",
-        "died": "",
-        "born_at": "Russian SFSR",
-        "died_at": "",
-        "aged": 68,
-        "copyright": ""
-    },
-    {
-        "id": "straub-huillet",
-        "name": "Straub-Huillet",
-        "name_jp": "ストローブ＝ユイレ",
-        "born": "1933-01-08",
-        "died": "",
-        "born_at": "France",
-        "died_at": "",
-        "aged": 86,
-        "copyright": ""
-    },
-    {
-        "id": "yang",
-        "name": "Edward Yang",
-        "name_jp": "楊德昌",
-        "born": "1947-11-06",
-        "died": "2007-06-29",
-        "born_at": "China, Shanghai",
-        "died_at": "U.S., California",
-        "aged": 59,
-        "copyright": ""
-    },
-    {
-        "id": "zhangke",
-        "name": "Jia Zhangke",
-        "name_jp": "ジャ・ジャンクー",
-        "born": "1970-05-24",
-        "died": "",
-        "born_at": "China, Shangxi",
-        "died_at": "(China)",
-        "aged": 49,
-        "copyright": ""
     }
 ]
