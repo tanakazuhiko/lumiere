@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta name="description" content="d3.js timeline infographics visualization cinema タイムライン 視覚表現 映画作家 ジャン・ルノアール ジョン・フォード 小津 安二郎 ロベルト・ロッセリーニ アルフレッド・ヒッチコック ハワード・ホークス フリッツ・ラング F.W.ムルナウ ルイス・ブニュエル マックス・オフュルス ジャック・ベッケル オーソン・ウェルズ 溝口 健二 山中 貞雄 成瀬 巳喜男 カール・テオドア・ドライヤー セルゲイ・エイゼンシュテイン エルンスト・ルビッチ ラオール・ウォルシュ アンソニー・マン ジャン＝リュック・ゴダール フランソワ・トリュフォー ロベール・ブレッソン ベルナルド・ベルトルッチ ジャック・ドゥミ ニコラス・レイ ジョセフ・ロージー ヴィクトル・エリセ ダニエル・シュミット ヴィム・ヴェンダース ジャン・ユスターシュ エリック・ロメール ジム・ジャームッシュ テオ・アンゲロプロス ロバート・アルトマン ダグラス・サーク サミュエル・フラー ロバート・アルドリッチ 黒沢 清 青山 真治 侯孝賢 ペドロ・コスタ クリント・イーストウッド マノエル・ド・オリヴェイラ D.W.グリフィス ジャン・ヴィゴ アレクサンドル・ソクーロフ ストローブ＝ユイレ 楊德昌 ジャ・ジャンクー">
-    <title>50 cinéastes et leurs œuvres</title>
+    <title>cinéastes et leurs œuvres</title>
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <script src="js/gtm.js"></script>
@@ -38,11 +38,7 @@
             <div class="i_died item">died</div>
         </div>
     </div>
-    <!-- script -->
-    <script src="js/d3.v5.js"></script>
-    <script src="js/topojson.v1.min.js"></script>
-    <script src="js/main.js"></script>
-    <!-- /script -->
+    <div id="map" class="map"></div>
     <div id="copyright" class="copyright"></div>
     <div class="footer">
         <div>
@@ -50,5 +46,10 @@
             powerd by <a href="https://d3js.org/" target="_blank">D3.js</a>.
         </div>
     </div>
+    <!-- script -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1bhaD7vQDrHt1wEUdKA_3HsjDVy4nVKw"></script>
+    <script src="js/d3.v5.js"></script>
+    <script src="js/main.js"></script>
+    <!-- /script -->
 </body>
 </html>

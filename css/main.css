@@ -19,6 +19,9 @@ body {
 }
 
 svg {
+    position: absolute;
+    top: 0;
+    left: 0;
     font: 10px sans-serif;
     margin-top: 55px;
     shape-rendering: crispEdges;
@@ -78,6 +81,7 @@ rect.born, rect.died, rect.film {
     background-color: #222;
     cursor: default;
     opacity: 0.92;
+    z-index: 2;
 }
 
 .header .title {
@@ -267,6 +271,7 @@ rect.born, rect.died, rect.film {
     color: #aaa;
     margin-left: 5px;
     cursor: default;
+    z-index: 20;
 }
 
 /* copyright */
@@ -280,6 +285,7 @@ rect.born, rect.died, rect.film {
     color: #aaa;
     margin-left: 5px;
     cursor: default;
+    z-index: 20;
 }
 
 /* axis */
@@ -358,6 +364,9 @@ line {
 }
 
 .tooltip_name_jp {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 200;
+    color: #0A0A0A;
     padding: 4px 4px 0 4px;
     font-size: 1.4rem;
 }
@@ -368,12 +377,17 @@ line {
 
 .tooltip_name {
     padding: 0 4px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 200;
     font-size: 1.2rem;
     color: #191970;
 }
 
 .tooltip_born {
     padding: 2px 2px 0 2px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 200;
+    color: #0A0A0A;
     font-size: 1rem;
 }
 
@@ -384,44 +398,33 @@ line {
 .tooltip_place {
     padding: 0 2px 0 5px;
     font-size: 0.7rem;
-}
-
-/* map */
-.overlay {
-  fill: none;
-  pointer-events: all;
-}
-
-.land {
-  fill: #000;
-}
-
-.boundary {
-  fill: none;
-  stroke: #fff;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-
-.svg_map {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: #636161;
-}
-
-.area_map {
-    font-size: 1pt;
-    fill: #f03b20;
-    cursor: default;
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-weight: 200;
+    color: #0A0A0A;
 }
 
-.name_map {
-    font-size: 1pt;
-    fill: #aaa;
-    cursor: default;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-weight: 200;
+/* google map */
+.map {
+    width: 100%;
+    height: 100%;
+    transition: opacity 100ms, visibility 100ms;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.gm-style .gm-style-iw-c {
+    border-radius: 4px;
+    padding: 0px;
+}
+
+.gm-style-iw-d {
+    overflow: hidden !important;
+    line-height: 18px;
+    padding-bottom: 6px;
 }

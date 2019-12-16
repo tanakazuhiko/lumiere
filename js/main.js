@@ -6,8 +6,6 @@
 // variables
 var directors_path = "../data/directors.json";
 var films_path = "../data/films.json";
-var areas_path = "../data/areas.json";
-var map_path = "../data/world-50m.json"
 var directors_img_path = "../images/directors/";
 var films_img_path = "../images/films/";
 var png_ext = ".png";
@@ -34,10 +32,10 @@ var margin = { top: 0, right: 0, bottom: 40, left: 0 };
 var today = new Date();
 var width, height;
 var svg, rect, tooltip, zoom, zoom_map, g, g_map, g_area, g_name;
-var e_sort, e_reset, e_copyright, e_count_d, e_count_f, e_headline, e_live, e_age;
+var e_sort, e_reset, e_copyright, e_count_d, e_count_f, e_headline, e_live, e_age, e_map;
 var name, bar, born, died, film;
 var x, y, xAxis, yAxis, gX, gY;
-var directors, films, areas;
+var directors, films;
 var area_count = [];
 
 // main
@@ -45,68 +43,49 @@ d3.json(directors_path).then(
     function(directors){
         d3.json(films_path).then(
             function(films){
-                d3.json(areas_path).then(
-                    function(areas){
-                        // init
-                        init(directors, films);
-                        // axis
-                        axis();
-                        // draw
-                        draw(directors, films);
+                // init
+                init(directors, films);
+                // axis
+                axis();
+                // draw
+                draw(directors, films);
+                // sort
+                sort_type = "name";
+                sort(sort_type, directors, films);
+                // zoom
+                initZoom();
+                // re sort
+                sort_type = "born";
+                sort(sort_type, directors, films);
+                // reset
+                resetted();
+                // sort
+                e_sort.onchange = function() {
+                    sort_type = this.options[this.selectedIndex].value;
+                    if(sort_type == "born_at") {
+                        e_map.classList.add("active");
+                        e_copyright.style.opacity = 0;
+                        // init map
+                        init_map(directors);
+                    } else {
+                        e_map.classList.remove("active");
+                        e_copyright.style.opacity = 1;
                         // sort
-                        sort_type = "name";
-                        sort(sort_type, directors, films, areas);
-                        // zoom
-                        init_zoom();
-                        // re sort
-                        sort_type = "born";
-                        sort(sort_type, directors, films, areas);
-                        // reset
-                        resetted();
-                        // sort
-                        e_sort.onchange = function() {
-                            d3.selectAll(".svg_map").remove();
-                            sort_type = this.options[this.selectedIndex].value;
-                            sort(sort_type, directors, films, areas);
-
-                            if(sort_type == "born_at") {
-                                document.body.style.backgroundImage = "";
-                                e_headline.innerHTML = "";
-                                e_live.innerHTML = "";
-                                e_age.innerHTML = "";
-                                e_headline.style.opacity = 0;
-                                e_live.style.opacity = 0;
-                                e_age.style.opacity = 0;
-
-                                d3.selectAll(".svg_main")
-                                .transition()
-                                .duration(duration_sort)
-                                .attr("opacity", 0);
-                            } else {
-                                e_headline.style.opacity = 1;
-                                e_live.style.opacity = 1;
-                                e_age.style.opacity = 1;
-
-                                d3.selectAll(".svg_main")
-                                .transition()
-                                .duration(duration_sort)
-                                .attr("opacity", 1);
-                            }
-                        }
-                        // reset
-                        e_reset.onclick = function() {
-                            d3.selectAll(".svg_main").attr("opacity", 1);
-                            d3.selectAll(".svg_map").remove();
-                            e_headline.style.opacity = 1;
-                            e_live.style.opacity = 1;
-                            e_age.style.opacity = 1;
-                            document.body.style.backgroundImage = "";
-
-                            sort("born", directors, films, areas);
-                            resetted();
-                        }
+                        sort(sort_type, directors, films);
                     }
-                );
+                }
+                // reset
+                e_reset.onclick = function() {
+                    d3.selectAll(".svg_main").attr("opacity", 1);
+                    d3.selectAll(".svg_map").remove();
+                    e_headline.style.opacity = 1;
+                    e_live.style.opacity = 1;
+                    e_age.style.opacity = 1;
+                    document.body.style.backgroundImage = "";
+
+                    sort("born", directors, films);
+                    resetted();
+                }
             }
         );
     }
@@ -127,6 +106,8 @@ function init(directors, films) {
     e_headline = document.getElementById("headline");
     e_live = document.getElementById("live");
     e_age = document.getElementById("age");
+    e_map = document.getElementById("map");
+    e_map.style.height = window.innerHeight + "px";
 
     // count
     var from = 0;
@@ -190,6 +171,61 @@ function init(directors, films) {
     .select("body")
     .append("div")
     .attr("class", "tooltip");
+}
+
+// init map
+function init_map(directors) {
+    var latLng, lat, lng, marker, infowindow;
+    var InforObj = [];
+    var p_zoom = 3.6;
+    var p_lat = 44.918669;
+    var p_lng = -36.905313;
+    var p_type = "hybrid"; // satellite
+    // map
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: p_zoom,
+        center: new google.maps.LatLng(p_lat, p_lng),
+        mapTypeId: p_type,
+        mapTypeControl: false,
+        fullscreenControl: false,
+        scaleControl: true
+    });
+    // directors
+    directors.forEach(function(director, index, arr) {
+        if(!area_count[director.born_at]) {
+            area_count[director.born_at] = 1;
+        } else {
+            area_count[director.born_at] += 1;
+        }
+        lat = director.lat;
+        lng = director.lng + (area_count[director.born_at]-1) * 0.3;
+        // maker
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, lng),
+            map: map
+        });
+        // listener
+        google.maps.event.addListener(marker, "mouseover",
+            function(event){
+                setName(directors[index]);
+                closeOtherInfo();
+                infowindow = new google.maps.InfoWindow({
+                    content: setBorn(directors[index])
+                });
+                infowindow.open(map, marker);
+                infowindow.setPosition(event.latLng);
+                InforObj[0] = infowindow;
+            }
+        );
+    });
+    // closeOtherInfo
+    function closeOtherInfo() {
+        if(InforObj.length > 0) {
+            InforObj[0].set("marker", null);
+            InforObj[0].close();
+            InforObj.length = 0;
+        }
+    }
 }
 
 // axis
@@ -260,7 +296,7 @@ function draw(directors, films) {
         return x(formatDate(died)) - x(formatDate(d.born));
     })
     .attr("height", function(d) { return bar_height; })
-    .on("mouseover", function(d) { changeBg(d); });
+    .on("mouseover", function(d) { setDirector(d); });
 
     // born
     born = g_born
@@ -346,187 +382,76 @@ function draw(directors, films) {
 }
 
 // sort
-function sort(sort_type, directors, films, areas) {
-    if(sort_type == "born_at") {
-        // map
-        var projection = d3
-        .geoMercator()
-        .translate([0, 100])
-        .scale(width / 2 / Math.PI);
+function sort(sort_type, directors, films) {
+    // name
+    d3.selectAll(".name")
+    .sort(compareValues(sort_type))
+    .transition()
+    .duration(duration_sort)
+    .attr("x", function(d, i) {
+        if(sort_type == "id") {
+            return 120;
+        } else if(sort_type == "aged") {
+            return 126;
+        } else {
+            return x(formatDate(d.born)) - 4;
+        }
+    })
+    .attr("y", function(d, i) { return bar_y * (i + offset) + bar_height; })
+    .text(function(d, i) {
+        if(sort_type == "id") {
+            var num = d.name.lastIndexOf(" ");
+            if(d.id == "straub-huillet")
+            return d.name + ", S";
+            else
+            return d.name + ", " + d.name.substr(num, 2);
+        } else if(sort_type == "aged") {
+            var age = d.died ? d.aged : calcAge(d.born, today);
+            return d.name + ", " + age;
+        } else if(sort_type == "born_at") {
+            return d.name + ", " + d.born_at;
+        } else {
+            return d.name;
+        }
+    })
 
-        zoom_map = d3
-        .zoom()
-        .scaleExtent([1, 20])
-        .on("zoom", zoomed_map);
+    // bar
+    d3.selectAll(".bar")
+    .sort(compareValues(sort_type))
+    .transition()
+    .duration(duration_sort)
+    .attr("y", function(d, i) { return bar_y * (i + offset); });
 
-        var path = d3
-        .geoPath()
-        .projection(projection);
+    // born
+    d3.selectAll(".born")
+    .sort(compareValues(sort_type))
+    .transition()
+    .duration(duration_sort)
+    .attr("y", function(d, i) { return bar_y * (i + offset); });
 
-        svg_map = d3
-        .select("body")
-        .append("svg")
-        .attr("class", "svg_map")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-        .call(zoom_map);
-
-        g_map = svg_map
-        .append("g")
-        .attr("class", "g_map");
-
-        g_area = svg_map
-        .append("g")
-        .attr("class", "g_area");
-
-        g_name = svg_map
-        .append("g")
-        .attr("class", "g_name");
-
-        svg_map
-        .append("rect")
-        .attr("class", "overlay")
-        .attr("x", -width / 2)
-        .attr("y", -height / 2)
-        .attr("width", width)
-        .attr("height", height);
-
-        d3.json(map_path).then(
-            function(world) {
-                // map
-                g_map
-                .append("path")
-                .datum(topojson.feature(world, world.objects.countries))
-                .attr("class", "land")
-                .attr("d", path);
-
-                // area
-                g_area
-                .selectAll(".area_map")
-                .data(areas)
-                .enter()
-                .append("text")
-                .attr("class", "area_map")
-                .attr("x", function(d) { return d.x; })
-                .attr("y", function(d) { return d.y; })
-                .text(function(d) {
-                    var arr = d.area.split(",");
-                    return arr[1] + ", " + arr[0];
-                })
-
-                // name
-                g_name
-                .selectAll(".name_map")
-                .data(directors)
-                .enter()
-                .append("text")
-                .attr("class", "name_map")
-                .attr("x", function(d) { return getAreaX(areas, d.born_at); })
-                .attr("y", function(d, i) { return getAreaY(areas, d.born_at); })
-                .text(function(d, i) {
-                    return d.name + ", " + d.born.substr(0, 4) + " - " + d.died.substr(0, 4);
-                })
+    // died
+    d3.selectAll(".died")
+    .sort(compareValues(sort_type))
+    .transition()
+    .duration(duration_sort)
+    .attr("y", function(d, i) {
+        var id = (d && d.id) ? d.id : "";
+        var y = bar_y * (i + offset);
+        // film
+        films.filter(function(item, index){
+            if(item.director_id == id) {
+                d3.selectAll("." + id)
+                .transition()
+                .duration(duration_sort)
+                .attr("y", y);
             }
-        );
-    } else {
-        // name
-        d3.selectAll(".name")
-        .sort(compareValues(sort_type))
-        .transition()
-        .duration(duration_sort)
-        .attr("x", function(d, i) {
-            if(sort_type == "id") {
-                return 120;
-            } else if(sort_type == "aged") {
-                return 126;
-            } else {
-                return x(formatDate(d.born)) - 4;
-            }
-        })
-        .attr("y", function(d, i) { return bar_y * (i + offset) + bar_height; })
-        .text(function(d, i) {
-            if(sort_type == "id") {
-                var num = d.name.lastIndexOf(" ");
-                if(d.id == "straub-huillet")
-                return d.name + ", S";
-                else
-                return d.name + ", " + d.name.substr(num, 2);
-            } else if(sort_type == "aged") {
-                var age = d.died ? d.aged : calcAge(d.born, today);
-                return d.name + ", " + age;
-            } else if(sort_type == "born_at") {
-                return d.name + ", " + d.born_at;
-            } else {
-                return d.name;
-            }
-        })
-
-        // bar
-        d3.selectAll(".bar")
-        .sort(compareValues(sort_type))
-        .transition()
-        .duration(duration_sort)
-        .attr("y", function(d, i) { return bar_y * (i + offset); });
-
-        // born
-        d3.selectAll(".born")
-        .sort(compareValues(sort_type))
-        .transition()
-        .duration(duration_sort)
-        .attr("y", function(d, i) { return bar_y * (i + offset); });
-
-        // died
-        d3.selectAll(".died")
-        .sort(compareValues(sort_type))
-        .transition()
-        .duration(duration_sort)
-        .attr("y", function(d, i) {
-            var id = (d && d.id) ? d.id : "";
-            var y = bar_y * (i + offset);
-            // film
-            films.filter(function(item, index){
-                if(item.director_id == id) {
-                    d3.selectAll("." + id)
-                    .transition()
-                    .duration(duration_sort)
-                    .attr("y", y);
-                }
-            });
-            return y;
         });
-    }
-}
-
-// area x
-function getAreaX(areas, area) {
-    var result = 0;
-    areas.filter(function(item, index){
-        if(areas[index].area == area) {
-            result = areas[index].x;
-        }
+        return y;
     });
-    return result;
 }
 
-// area y
-function getAreaY(areas, area) {
-    if(!area_count[area.toString()])
-    area_count[area.toString()] = 1;
-    else
-    area_count[area.toString()] += 1;
-    var result = 0;
-    areas.filter(function(item, index){
-        if(areas[index].area == area) {
-            result = areas[index].y + ((area_count[area.toString()]) * 1.5);
-        }
-    });
-    return result;
-}
-
-// init_zoom
-function init_zoom() {
+// initZoom
+function initZoom() {
     zoom = d3
     .zoom()
     .scaleExtent([zoom_from, zoom_to])
@@ -554,17 +479,6 @@ function zoomed() {
     svg.selectAll(".film").attr("transform", d3.event.transform);
 }
 
-// zoom map
-function zoomed_map() {
-    var t = d3.event.transform;
-    var s = t.k;
-    t.x = Math.min(width / 2 * (s - 1), Math.max(width / 2 * (1 - s), t.x));
-    t.y = Math.min(height / 2 * (s - 1) + 230 * s, Math.max(height / 2 * (1 - s) - 230 * s, t.y));
-    g_map.attr("transform", d3.event.transform);
-    g_area.attr("transform", d3.event.transform);
-    g_name.attr("transform", d3.event.transform);
-}
-
 // reset
 function resetted() {
     svg
@@ -580,7 +494,7 @@ function resetted() {
 }
 
 // background
-function changeBg(director) {
+function setDirector(director) {
     // backgroundImage
     var path = directors_img_path + director.id + png_ext;
     document.body.style.backgroundImage = "url('" + path + "')";
@@ -590,6 +504,11 @@ function changeBg(director) {
     e_copyright.innerHTML = str;
 
     // name
+    setName(director);
+}
+
+// header name
+function setName(director) {
     var str = director.name + "(" + director.born + "〜" + director.died + ")";
     var lavel = director.died ? "aged" : "age";
     var age = director.died ? director.aged : calcAge(director.born, today);
