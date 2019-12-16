@@ -32,7 +32,7 @@ var margin = { top: 0, right: 0, bottom: 40, left: 0 };
 var today = new Date();
 var width, height;
 var svg, rect, tooltip, zoom, zoom_map, g, g_map, g_area, g_name;
-var e_sort, e_reset, e_copyright, e_count_d, e_count_f, e_headline, e_live, e_age, e_map;
+var e_sort, e_reset, e_copyright, e_count_d, e_count_f, e_headline, e_live, e_age, e_map, e_powered;
 var name, bar, born, died, film;
 var x, y, xAxis, yAxis, gX, gY;
 var directors, films;
@@ -65,11 +65,15 @@ d3.json(directors_path).then(
                     if(sort_type == "born_at") {
                         e_map.classList.add("active");
                         e_copyright.style.opacity = 0;
+                        e_powered.textContent = "Google Map API";
+                        e_powered.href = "https://cloud.google.com/maps-platform/";
                         // init map
                         init_map(directors);
                     } else {
                         e_map.classList.remove("active");
                         e_copyright.style.opacity = 1;
+                        e_powered.textContent = "d3.js";
+                        e_powered.href = "https://d3js.org/";
                         // sort
                         sort(sort_type, directors, films);
                     }
@@ -100,6 +104,7 @@ function init(directors, films) {
     // element
     e_sort = document.getElementById("sort");
     e_reset = document.getElementById("reset");
+    e_powered = document.getElementById("powered");
     e_copyright = document.getElementById("copyright");
     e_count_d = d3.select("#count_d");
     e_count_f = d3.select("#count_f");
@@ -181,6 +186,7 @@ function init_map(directors) {
     var p_lat = 44.918669;
     var p_lng = -36.905313;
     var p_type = "hybrid"; // satellite
+    var current_name = e_headline.textContent.substr(2);
     // map
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: p_zoom,
@@ -188,7 +194,6 @@ function init_map(directors) {
         mapTypeId: p_type,
         mapTypeControl: false,
         fullscreenControl: false,
-        scaleControl: true
     });
     // directors
     directors.forEach(function(director, index, arr) {
@@ -207,7 +212,7 @@ function init_map(directors) {
         // listener
         google.maps.event.addListener(marker, "mouseover",
             function(event){
-                setName(directors[index]);
+                setDirector(directors[index]);
                 closeOtherInfo();
                 infowindow = new google.maps.InfoWindow({
                     content: setBorn(directors[index])
@@ -217,6 +222,14 @@ function init_map(directors) {
                 InforObj[0] = infowindow;
             }
         );
+        if(director.name == current_name) {
+            infowindow = new google.maps.InfoWindow({
+                content: setBorn(directors[index])
+            });
+            infowindow.open(map, marker);
+            infowindow.setPosition(event.latLng);
+            InforObj[0] = infowindow;
+        }
     });
     // closeOtherInfo
     function closeOtherInfo() {
@@ -504,11 +517,6 @@ function setDirector(director) {
     e_copyright.innerHTML = str;
 
     // name
-    setName(director);
-}
-
-// header name
-function setName(director) {
     var str = director.name + "(" + director.born + "〜" + director.died + ")";
     var lavel = director.died ? "aged" : "age";
     var age = director.died ? director.aged : calcAge(director.born, today);
