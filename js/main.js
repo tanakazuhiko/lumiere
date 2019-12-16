@@ -222,6 +222,7 @@ function init_map(directors) {
                 InforObj[0] = infowindow;
             }
         );
+        // current
         if(director.name == current_name) {
             infowindow = new google.maps.InfoWindow({
                 content: setBorn(directors[index])

@@ -11,10 +11,11 @@ http://lumiere.gftd.me/index.html
 - double click: zoom in
 - shift + double click: zoom out
 - select box: sort directors by name, born, died, age, country
-- mouseover: show film information
+- mouseover: show information window(director, film)
 
 ### dependency
 - [d3.v5.js](https://d3js.org)
+- [googlemap.v3.39.4.js](https://cloud.google.com/maps-platform/)
 
 ### licence
 [MIT License](https://spdx.org/licenses/MIT)
