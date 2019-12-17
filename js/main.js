@@ -552,8 +552,10 @@ function setBorn(d) {
 function setFilm(directors, film) {
     var str = "";
     var add = "";
+    var youtube_url = "https://www.youtube.com/embed/";
+    var option = "?autoplay=1&rel=0&modestbranding=1&loop=1";
     if(film.movie) {
-        str += "<iframe width=300 height=218 src='" + film.movie + "?autoplay=1&rel=0&modestbranding=1' frameborder=0 allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'></iframe>";
+        str += "<iframe width=300 height=218 src='" + youtube_url + film.movie + option + "' frameborder=0 allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'></iframe>";
     } else {
         str += "<img class='tooltip_img' src='" + films_img_path + film.director_id + "/" + film.no + png_ext + "'>";
     }

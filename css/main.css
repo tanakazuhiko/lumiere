@@ -430,3 +430,7 @@ line {
     line-height: 18px;
     padding-bottom: 6px;
 }
+
+.ytp-title-text {
+    visibility: hidden;
+}
