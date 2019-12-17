@@ -80,14 +80,14 @@ d3.json(directors_path).then(
                 }
                 // reset
                 e_reset.onclick = function() {
-                    d3.selectAll(".svg_main").attr("opacity", 1);
-                    d3.selectAll(".svg_map").remove();
-                    e_headline.style.opacity = 1;
-                    e_live.style.opacity = 1;
-                    e_age.style.opacity = 1;
+                    e_map.classList.remove("active");
+                    e_copyright.style.opacity = 1;
+                    e_powered.textContent = "d3.js";
+                    e_powered.href = "https://d3js.org/";
                     document.body.style.backgroundImage = "";
 
-                    sort("born", directors, films);
+                    sort_type = "born";
+                    sort(sort_type, directors, films);
                     resetted();
                 }
             }
@@ -144,6 +144,7 @@ function init(directors, films) {
         e_live.innerHTML = directors[random].born + " - " + directors[random].died;
         e_age.innerHTML = " (" + lavel + ":" + age + ")";
         e_copyright.innerHTML = directors[random].copyright ? directors[random].copyright : "unknown";
+        d3.select("#bar_" + directors[random].id).style("fill", "brown");
     });
 
     e_count_f
@@ -180,12 +181,12 @@ function init(directors, films) {
 
 // init map
 function init_map(directors) {
-    var latLng, lat, lng, marker, infowindow;
-    var InforObj = [];
     var p_zoom = 3.6;
     var p_lat = 44.918669;
     var p_lng = -36.905313;
-    var p_type = "hybrid"; // satellite
+    var p_type = "hybrid";
+    var latLng, lat, lng, marker, infowindow;
+    var inforObj = [];
     var current_name = e_headline.textContent.substr(2);
     // map
     map = new google.maps.Map(document.getElementById("map"), {
@@ -219,7 +220,7 @@ function init_map(directors) {
                 });
                 infowindow.open(map, marker);
                 infowindow.setPosition(event.latLng);
-                InforObj[0] = infowindow;
+                inforObj[0] = infowindow;
             }
         );
         // current
@@ -229,15 +230,15 @@ function init_map(directors) {
             });
             infowindow.open(map, marker);
             infowindow.setPosition(event.latLng);
-            InforObj[0] = infowindow;
+            inforObj[0] = infowindow;
         }
     });
     // closeOtherInfo
     function closeOtherInfo() {
-        if(InforObj.length > 0) {
-            InforObj[0].set("marker", null);
-            InforObj[0].close();
-            InforObj.length = 0;
+        if(inforObj.length > 0) {
+            inforObj[0].set("marker", null);
+            inforObj[0].close();
+            inforObj.length = 0;
         }
     }
 }
@@ -303,6 +304,7 @@ function draw(directors, films) {
     .enter()
     .append("rect")
     .attr("class", "bar")
+    .attr("id", function(d) { return "bar_" + d.id; })
     .attr("x", function(d) { return x(formatDate(d.born)); })
     .attr("y", function(d, i) { return bar_y * (i + offset); })
     .attr("width", function(d) {
@@ -505,6 +507,7 @@ function resetted() {
     e_age.innerHTML = "";
     e_copyright.innerHTML = "";
     e_sort.options[2].selected = true;
+    d3.selectAll(".bar").style("fill", "white");
 }
 
 // background
@@ -524,6 +527,10 @@ function setDirector(director) {
     e_headline.innerHTML = "::" + director.name;
     e_live.innerHTML = director.born + " - " + director.died;
     e_age.innerHTML = " (" + lavel + ":" + age + ")";
+
+    // bar
+    d3.selectAll(".bar").style("fill", "white");
+    d3.select("#bar_" + director.id).style("fill", "brown");
 }
 
 // tooltip born
@@ -545,7 +552,11 @@ function setBorn(d) {
 function setFilm(directors, film) {
     var str = "";
     var add = "";
-    str += "<img class='tooltip_img' src='" + films_img_path + film.director_id + "/" + film.no + png_ext + "'>";
+    if(film.movie) {
+        str += "<iframe width=300 height=218 src='" + film.movie + "?autoplay=1&rel=0&modestbranding=1' frameborder=0 allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'></iframe>";
+    } else {
+        str += "<img class='tooltip_img' src='" + films_img_path + film.director_id + "/" + film.no + png_ext + "'>";
+    }
     add = film.title_jp.length >= 12 ? "small" : "";
     str += "<div class='tooltip_title_jp " + add + "'>" + film.title_jp + "</div>";
     add = film.title.length >= 25 ? "small" : "";

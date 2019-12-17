@@ -4,35 +4,40 @@
         "no": 0,
         "title": "Intolerance",
         "title_jp": "イントレランス",
-        "year": "1916"
+        "year": "1916",
+        "movie": "https://www.youtube.com/embed/SyqDQnoXa70"
     },
     {
         "director_id": "griffith",
         "no": 1,
         "title": "Broken Blossoms",
         "title_jp": "散り行く花",
-        "year": "1919"
+        "year": "1919",
+        "movie": "https://www.youtube.com/embed/ZdIiZzc0Ceo"
     },
     {
         "director_id": "griffith",
         "no": 2,
         "title": "The Adventures of Dollie",
         "title_jp": "ドリーの冒険",
-        "year": "1908"
+        "year": "1908",
+        "movie": "https://www.youtube.com/embed/1CyJRT1zONw"
     },
     {
         "director_id": "griffith",
         "no": 3,
         "title": "Way Down East",
         "title_jp": "東への道",
-        "year": "1920"
+        "year": "1920",
+        "movie": "https://www.youtube.com/embed/MgYA4jUr4o0"
     },
     {
         "director_id": "griffith",
         "no": 4,
         "title": "Sally of the Sawdust",
         "title_jp": "曲馬団のサリー",
-        "year": "1925"
+        "year": "1925",
+        "movie": "https://www.youtube.com/embed/dDbe6hcdEq8"
     },
 
     {
@@ -55,14 +60,16 @@
         "no": 0,
         "title": "Nosferatu, a Symphony of Horror",
         "title_jp": "吸血鬼ノスフェラトゥ",
-        "year": "1922"
+        "year": "1922",
+        "movie": "https://www.youtube.com/embed/c3lizKN5aNc"
     },
     {
         "director_id": "murnau",
         "no": 1,
         "title": "Sunrise: A Song of Two Humans",
         "title_jp": "サンライズ",
-        "year": "1927"
+        "year": "1927",
+        "movie": "https://www.youtube.com/embed/XHDe_BHH2qo"
     },
 
     {

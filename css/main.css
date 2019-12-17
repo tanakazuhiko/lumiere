@@ -171,6 +171,7 @@ rect.born, rect.died, rect.film {
 .header .menu .item {
     display: inline-block;
     margin-right: 20px;
+    color: #ddd;
 }
 
 .header .menu .item select {
@@ -204,8 +205,8 @@ rect.born, rect.died, rect.film {
 
 .header .legend {
     position: absolute;
-    right: 180px;
-    top: 20px;
+    right: 200px;
+    top: 21px;
     color: #ddd;
     font-size: 10px;
     line-height: 12px;
@@ -411,6 +412,7 @@ line {
     opacity: 0;
     visibility: hidden;
     z-index: 1;
+    background-color: black;
 }
 
 .active {
