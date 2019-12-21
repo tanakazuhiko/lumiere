@@ -32,7 +32,7 @@ var margin = { top: 0, right: 0, bottom: 40, left: 0 };
 var today = new Date();
 var width, height;
 var svg, rect, tooltip, zoom, zoom_map, g, g_map, g_area, g_name;
-var e_sort, e_reset, e_copyright, e_count_d, e_count_f, e_headline, e_live, e_age, e_map, e_powered;
+var e_sort, e_reset, e_copyright, e_count_d, e_count_f, e_headline, e_live, e_age, e_map, e_powered, e_help;
 var name, bar, born, died, film;
 var x, y, xAxis, yAxis, gX, gY;
 var directors, films;
@@ -90,6 +90,15 @@ d3.json(directors_path).then(
                     sort(sort_type, directors, films);
                     resetted();
                 }
+                // help
+                e_help.onmouseover = function() {
+                    document.getElementById("fade_layer").style.visibility = "visible";
+                    document.getElementById("msg").style.visibility = "visible";
+                }
+                e_help.onmouseout = function() {
+                    document.getElementById("fade_layer").style.visibility = "hidden";
+                    document.getElementById("msg").style.visibility = "hidden";
+                }
             }
         );
     }
@@ -112,6 +121,7 @@ function init(directors, films) {
     e_live = document.getElementById("live");
     e_age = document.getElementById("age");
     e_map = document.getElementById("map");
+    e_help = document.getElementById("help");
     e_map.style.height = window.innerHeight + "px";
 
     // count

@@ -9,9 +9,7 @@
     <script src="js/gtm.js"></script>
 </head>
 <body>
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5V8JSNJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5V8JSNJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="header">
         <div class="title">
             <span id="count_d">0</span> <span class="title_1">cinéastes et leurs</span><!--
@@ -28,7 +26,7 @@
             <div class="i_died item">died</div>
         </div>
         <div class="menu">
-            <div class="races item">
+            <span class="races item">
                 Sort by:
                 <select id="sort">
                     <option value="id">name</option>
@@ -38,8 +36,27 @@
                     <option value="born_at">country</option>
                 </select>
                 <button id="reset" class="reset">reset</button>
-            </div>
+                <button id="help" class="help">?</button>
+            </span>
         </div>
+    </div>
+    <div id="fade_layer"></div>
+    <div id="msg">
+        ドラッグ：位置移動<br>
+        ダブルクリック：ズーム・イン<br>
+        シフト＋ダブルクリック：ズーム・アウト<br>
+        ホイール：ズーム・イン／アウト<br>
+        セレクトボックス：作家名、年齢、生誕日、死去日、出生地による並べ替え<br>
+        マウスオーバー：作家／作品情報表示<br>
+        リセット：初期表示<br>
+        <br>
+        drag: move time<br>
+        double click: zoom in<br>
+        shift + double click: zoom out<br>
+        scroll: zoom in/out<br>
+        select box: sort directors by name, age, born, died, country<br>
+        mouseover: show information(director, film)<br>
+        reset: default view<br>
     </div>
     <div id="map" class="map"></div>
     <div id="copyright" class="copyright"></div>
