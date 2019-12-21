@@ -6,11 +6,10 @@
 body {
     position: relative;
     background-color: #222;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 10px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif, "游ゴシック", "メイリオ";
+    font-weight: 200;
     color: #ddd;
     overflow: hidden;
-    font-weight: 200;
     background-repeat: no-repeat;
     background-position: top center;
     -moz-background-size: cover;
@@ -25,6 +24,8 @@ svg {
     font: 10px sans-serif;
     margin-top: 55px;
     shape-rendering: crispEdges;
+    font-family: "Helvetica Neue", Helvetica, sans-serif, "游ゴシック", "メイリオ";
+    font-weight: 300;
 }
 
 a {
@@ -58,7 +59,6 @@ a:hover {
     text-anchor: end;
     cursor: default;
     margin-right: 4px;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 12px;
     font-weight: 200;
 }
@@ -73,7 +73,7 @@ rect.born, rect.died, rect.film {
 
 /* header */
 .header {
-    height: 55px;
+    height: 45px;
     width: 100%;
     color: white;
     position: fixed;
@@ -111,11 +111,15 @@ rect.born, rect.died, rect.film {
     min-width: 45px;
 }
 
+.headline {
+    font-weight: 300;
+}
+
 .live, .age {
-     font-size: 13px;
-     font-weight: 100;
-     font-style: normal;
-     color: #a1a4ab;
+    font-size: 14px;
+    font-weight: 200;
+    font-style: normal;
+    color: #a1a4ab;
 }
 
 .live {
@@ -127,12 +131,12 @@ rect.born, rect.died, rect.film {
 .menu {
     font-size: 12px;
     font-weight: 100;
-    padding-right: 6px;
+    padding: 6px;
 }
 
 .menu .item select {
     color: #ddd;
-    padding-right: 1em;
+    padding: 4px;
     cursor: pointer;
     text-indent: 0.01px;
     text-overflow: ellipsis;
