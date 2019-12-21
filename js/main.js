@@ -570,7 +570,7 @@ function setFilm(directors, film) {
 }
 
 // compare
-function compareValues(key, order='asc') {
+function compareValues(key, order="asc") {
     return function(a, b) {
         if((!a || !b) || (!a.hasOwnProperty(key) || !b.hasOwnProperty(key))) {
             return 0;

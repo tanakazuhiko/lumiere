@@ -82,109 +82,80 @@ rect.born, rect.died, rect.film {
     cursor: default;
     opacity: 0.92;
     z-index: 2;
+    font-size: 26px;
+    font-weight: 100;
+    color: #a1a4ab;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 10px;
 }
 
 .header .title {
-    position: absolute;
-    top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
 }
 
-.header .title span {
+#count_d, #count_f {
     font-size: 26px;
     font-weight: 400;
-    color: #a1a4ab;
-}
-
-.header .title span#count_d {
-    position: absolute;
-    left: 5px;
     text-align: right;
 }
 
-.header .title span.title_1 {
-    position: absolute;
-    top: 5px;
-    left: 36px;
-    font-size: 20px;
-    font-weight: 100;
-    font-style: normal;
-    width: 200px;
-    color: #ddd;
+#count_d {
+    min-width: 40px;
 }
 
-.header .title span#count_f {
-    position: absolute;
-    left: 168px;
-    width: 50px;
-    text-align: right;
+#count_f {
+    min-width: 45px;
 }
 
-.header .title span.title_2 {
-    position: absolute;
-    top: 5px;
-    left: 219px;
-    font-size: 20px;
-    font-weight: 100;
-    font-style: normal;
-    width: 200px;
-    color: #ddd;
+.live, .age {
+     font-size: 13px;
+     font-weight: 100;
+     font-style: normal;
+     color: #a1a4ab;
 }
 
-.header .title span.headline {
-    position: absolute;
-    left: 279px;
-    width: 500px;
-    font-size: 26px;
-    font-weight: 200;
-    font-style: normal;
-    color: #a1a4ab;
+.live {
+    width: 70%;
+    padding-left: 357px;
+    width: 160px;
 }
 
-.header .title span.live {
-    font-size: 13px;
-    font-weight: 300;
-    font-style: normal;
-    position: absolute;
-    top: 27px;
-    left: 292px;
-    width: 300px;
-    color: #a1a4ab;
-}
-
-.header .title span.age {
+.menu {
     font-size: 12px;
-    font-weight: 300;
-    font-style: normal;
-    position: absolute;
-    top: 27px;
-    left: 442px;
-    width: 300px;
-    color: #a1a4ab;
+    font-weight: 100;
+    padding-right: 6px;
 }
 
-.header .menu {
-    position: absolute;
-    right: 0px;
-    top: 10px;
-}
-
-.header .menu .item {
-    display: inline-block;
-    margin-right: 20px;
+.menu .item select {
     color: #ddd;
-}
-
-.header .menu .item select {
-    background-color: #444;
+    padding-right: 1em;
+    cursor: pointer;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
     border: none;
-    font-size: 12px;
-    font-weight: 100;
-    border-radius: 0;
-    padding: 5px 20px;
-    margin-top: 8px;
-    color: #ddd;
-    width: 80px;
-    cursor: "pointer";
+    outline: none;
+    background: transparent;
+    background-color: #444;
+    background-image: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+    overflow-y: scroll;
+    overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
+}
+
+.header .menu .item select::-webkit-scrollbar {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.header .menu .item select::-ms-expand {
+    display: none;
 }
 
 .reset {
@@ -204,7 +175,6 @@ rect.born, rect.died, rect.film {
 }
 
 .header .legend {
-    position: absolute;
     right: 200px;
     top: 21px;
     color: #ddd;
