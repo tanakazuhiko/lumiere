@@ -559,7 +559,7 @@ function setFilm(directors, film) {
     } else {
         str += "<img class='tooltip_img' src='" + films_img_path + film.director_id + "/" + film.no + png_ext + "'>";
     }
-    add = film.title_jp.length >= 12 ? "small" : "";
+    add = film.title_jp.length >= 15 ? "xsmall" : film.title_jp.length >= 12 ? "small" : "";
     str += "<div class='tooltip_title_jp " + add + "'>" + film.title_jp + "</div>";
     add = film.title.length >= 25 ? "small" : "";
     str += "<div class='tooltip_title " + add + "'>" + film.title + "</div>";

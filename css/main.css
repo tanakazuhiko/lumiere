@@ -119,6 +119,7 @@ rect.born, rect.died, rect.film {
 
 .headline {
     font-weight: 300;
+    width: 100%;
 }
 
 .live, .age {
@@ -336,6 +337,10 @@ line {
 
 .tooltip_title.small {
     font-size: 0.9rem;
+}
+
+.xsmall {
+font-size: 1.0rem;
 }
 
 .tooltip_year {
