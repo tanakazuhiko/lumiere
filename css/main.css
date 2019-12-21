@@ -6,7 +6,7 @@
 body {
     position: relative;
     background-color: #222;
-    font-family: "Helvetica Neue", Helvetica, sans-serif, "游ゴシック", "メイリオ";
+    font-family: "Helvetica Neue", Helvetica, "游ゴシック体", 'Yu Gothic', "YuGothic", "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "Osaka", "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
     font-weight: 200;
     color: #ddd;
     overflow: hidden;
@@ -24,7 +24,7 @@ svg {
     font: 10px sans-serif;
     margin-top: 55px;
     shape-rendering: crispEdges;
-    font-family: "Helvetica Neue", Helvetica, sans-serif, "游ゴシック", "メイリオ";
+    font-family: "Helvetica Neue", Helvetica, "游ゴシック体", 'Yu Gothic', "YuGothic", "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "Osaka", "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
     font-weight: 300;
 }
 
@@ -94,7 +94,13 @@ rect.born, rect.died, rect.film {
 .header .title {
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+    width: 60%;
+}
+
+.profile {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
 }
 
 #count_d, #count_f {
@@ -108,7 +114,7 @@ rect.born, rect.died, rect.film {
 }
 
 #count_f {
-    min-width: 45px;
+    min-width: 44px;
 }
 
 .headline {
@@ -124,8 +130,8 @@ rect.born, rect.died, rect.film {
 
 .live {
     width: 70%;
-    padding-left: 357px;
     width: 160px;
+    padding-left: 14px;
 }
 
 .menu {
@@ -240,27 +246,26 @@ rect.born, rect.died, rect.film {
 /* footer */
 .footer {
     position: absolute;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     bottom: 0px;
-    font-size: 1.1em;
     color: #aaa;
     margin-left: 5px;
     cursor: default;
     z-index: 20;
+    font-size: 12px;
 }
 
 /* copyright */
 .copyright {
     position: absolute;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     bottom: 0px;
     right: 6px;
-    font-size: 1em;
-    font-weight: 400;
     color: #aaa;
     margin-left: 5px;
     cursor: default;
     z-index: 20;
+    font-size: 12px;
 }
 
 /* axis */
