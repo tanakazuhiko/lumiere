@@ -481,7 +481,7 @@ function initZoom() {
     zoom = d3
     .zoom()
     .scaleExtent([zoom_from, zoom_to])
-    .on("zoom", zoomed)
+    .on("zoom", zoomed);
 
     svg.call(zoom);
 
