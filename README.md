@@ -14,7 +14,7 @@ http://lumiere.gftd.me/index.html
 - mouseover: show information window(director, film)
 
 ### dependency
-- [d3.v5.js](https://d3js.org)
+- [d3.v5.14.2.js](https://d3js.org)
 - [googlemap.v3.39.4.js](https://cloud.google.com/maps-platform/)
 
 ### licence
