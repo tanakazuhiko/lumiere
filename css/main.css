@@ -286,7 +286,7 @@ rect.born, rect.died, rect.film {
     font-size: 14px;
 }
 
-#msg.small {
+#msg span {
     font-size: 10px;
 }
 
